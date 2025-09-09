@@ -60,7 +60,7 @@ A beautiful, interactive showcase website for displaying login page designs with
 sicoder-showcase/
 ├── index.html          # Main HTML file with embedded CSS & JS
 ├── README.md           # This documentation
-└── assets/            # (Optional) Add your project images here
+└── assets/            
 ```
 
 ## 🎨 Customization
