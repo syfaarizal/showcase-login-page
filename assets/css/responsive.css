@@ -11,8 +11,16 @@
     }
 
     .theme-toggle {
-        top: 10px;
-        right: 10px;
+        top: 15px;
+        right: 15px;
         padding: 5px 5px;
+    }
+
+    header {
+        padding-top: 5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
     }
 }

@@ -305,24 +305,6 @@ footer a:hover {
   animation: pulse 0.3s ease;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 12px;
-  }
-  header {
-    padding-top: 5rem;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Demo Modal */
 .demo-modal {
   display: none;
