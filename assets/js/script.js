@@ -176,7 +176,7 @@ function showForgotPassword() {
 }
 
 function showContact() {
-  alert('📧 Contact: sicoder@example.com\n💬 Let\'s create something amazing together!');
+  alert('📧 Contact: syifairgi@gmail.com\n💬 Let\'s create something amazing together!');
 }
 
 // Close modal when clicking outside
