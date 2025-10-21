@@ -8,7 +8,7 @@ const currentTheme = localStorage.getItem('theme') || 'dark';
 if (currentTheme === 'light') {
   body.setAttribute('data-theme', 'light');
   themeSwitch.classList.add('active');
-  slider.textContent = '☀️';
+  slider.textContent = '☀︎';
 }
 
 themeSwitch.addEventListener('click', () => {
@@ -18,12 +18,12 @@ themeSwitch.addEventListener('click', () => {
   if (body.getAttribute('data-theme') === 'light') {
     body.removeAttribute('data-theme');
     themeSwitch.classList.remove('active');
-    slider.textContent = '🌙';
+    slider.textContent = '☽';
     localStorage.setItem('theme', 'dark');
   } else {
     body.setAttribute('data-theme', 'light');
     themeSwitch.classList.add('active');
-    slider.textContent = '☀️';
+    slider.textContent = '☀︎';
     localStorage.setItem('theme', 'light');
   }
 });
