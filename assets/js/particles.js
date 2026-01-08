@@ -69,8 +69,8 @@ class ParticleSystem {
       const distance = Math.sqrt(dx * dx + dy * dy);
       
       if (distance < 100) {
-        particle.speedX -= dx * 0.001;
-        particle.speedY -= dy * 0.001;
+        particle.speedX -= dx * 0.0001;
+        particle.speedY -= dy * 0.0001;
       }
     });
   }
@@ -115,22 +115,6 @@ class ParticleSystem {
       this.mouse.x = e.clientX;
       this.mouse.y = e.clientY;
     });
-
-    // Add particles on click
-    window.addEventListener('click', (e) => {
-      for (let i = 0; i < 5; i++) {
-        this.particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          size: Math.random() * 4 + 1,
-          speedX: Math.random() * 4 - 2,
-          speedY: Math.random() * 4 - 2,
-          color: this.getParticleColor(),
-          alpha: 0.8,
-          connectionDistance: 100
-        });
-      }
-    });
   }
 }
 
@@ -138,7 +122,7 @@ class ParticleSystem {
 document.addEventListener('DOMContentLoaded', () => {
   new ParticleSystem();
   
-  // Add mouse trail effect
+  // mouse trail effect
   const mouseTrail = document.createElement('div');
   mouseTrail.className = 'mouse-trail';
   document.body.appendChild(mouseTrail);
