@@ -3,123 +3,509 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SICODER Showcase - Collection of beautifully crafted login pages with modern code and interactive designs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/animations.css">
+  <link rel="stylesheet" href="./assets/css/particles.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/responsive.css">
-  <title>SICODER Showcase</title>
+  <title>SICODER Showcase | Interactive Login Page Collection</title>
+  <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
+  
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+  
+  <!-- Progress Indicator -->
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
 
   <!-- Theme Toggle -->
   <div class="theme-toggle">
     <span class="theme-icon">☾</span>
     <div class="switch" id="themeSwitch">
-      <div class="slider">☾</div>
+      <div class="slider">
+        <i class="fas fa-moon"></i>
+      </div>
     </div>
     <span class="theme-icon">☀︎</span>
   </div>
 
-  <header>
-    <h1>SICO<span class="accent">DER</span> .</h1>
-    <p>Crafting aesthetic login pages with modern code.</p>
-    <a href="https://github.com/" target="_blank" rel="noopener" class="cta-btn">Visit GitHub</a>
-    <div class="filter-nav">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="minimalist">Minimalist</button>
-      <button class="filter-btn" data-filter="dark">Dark Mode</button>
-      <button class="filter-btn" data-filter="gradient">Gradient Style</button>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-brand">
+      <h1>SICO<span class="accent">DER</span><span class="dot">.</span></h1>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-section="showcase">Showcase</a>
+      <a href="#" class="nav-link" data-section="design">Design</a>
+      <a href="#" class="nav-link" data-section="about">About</a>
+      <button class="nav-cta" onclick="scrollToProjects()">Explore Projects</button>
+    </div>
+    <button class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-line">Crafting <span class="accent">Aesthetic</span></span>
+        <span class="title-line">Login Experiences</span>
+      </h1>
+      <p class="hero-subtitle">Modern, interactive, and beautifully designed login pages built with clean code.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Interactive</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#showcase" class="cta-btn primary">
+          <i class="fas fa-eye"></i> View Showcase
+        </a>
+        <a href="https://github.com/" target="_blank" class="cta-btn secondary">
+          <i class="fab fa-github"></i> Visit GitHub
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card">
+        <div class="card-preview minimalist"></div>
+        <div class="card-preview gradient"></div>
+        <div class="card-preview dark"></div>
+      </div>
     </div>
   </header>
 
+  <!-- Filter Section -->
+  <section class="filter-section" id="showcase">
+    <div class="section-header">
+      <h2>Project <span class="accent">Gallery</span></h2>
+      <p>Filter by style to find exactly what you're looking for</p>
+    </div>
+    <div class="filter-nav">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fas fa-layer-group"></i> All Projects
+      </button>
+      <button class="filter-btn" data-filter="minimalist">
+        <i class="fas fa-minimize"></i> Minimalist
+      </button>
+      <button class="filter-btn" data-filter="dark">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
+      <button class="filter-btn" data-filter="gradient">
+        <i class="fas fa-palette"></i> Gradient
+      </button>
+      <button class="filter-btn" data-filter="premium">
+        <i class="fas fa-gem"></i> Premium
+      </button>
+    </div>
+    
+    <div class="sort-controls">
+      <span>Sort by:</span>
+      <select id="sortSelect">
+        <option value="featured">Featured</option>
+        <option value="newest">Newest</option>
+        <option value="popular">Most Popular</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
   <section class="gallery">
-    <div class="card" data-category="dark minimalist">
-      <span class="badge">Dark Mode</span>
-      <img src="./assets/img/login-page-blackcat.png" alt="Minimalist Login">
+    <!-- Card 1: BlackCat Minimalist -->
+    <div class="card" data-category="dark minimalist" data-id="blackcat">
+      <div class="card-badge">
+        <span class="badge dark">Dark Mode</span>
+        <span class="badge minimalist">Minimalist</span>
+      </div>
+      <div class="card-image">
+        <img src="./assets/img/login-page-blackcat.png" alt="BlackCat Minimalist Login" loading="lazy">
+        <div class="card-overlay">
+          <button class="quick-view" data-project="blackcat">
+            <i class="fas fa-expand"></i> Quick View
+          </button>
+        </div>
+      </div>
       <div class="card-content">
-        <h3>Dark, simple, and elegant.</h3>
-        <p>A sleek and minimalist login form with a cozy dark mode theme, smooth input focus, and subtle animations for a clean user experience.</p>
-        <div class="tech-stack">HTML | CSS | JS | Minimalist | Dark Mode</div>
-        <div class="links">
-          <a href="https://github.com/syfaarizal/css-login-button" onclick="openDemo('minimalist')">GitHub</a>
-          <a href="https://syfaarizal.github.io/css-login-button/" onclick="openDemo('minimalist')">Live Demo</a>
+        <h3>BlackCat Minimalist</h3>
+        <p class="card-desc">A sleek dark mode login with smooth animations and focus states.</p>
+        <div class="card-meta">
+          <span class="meta-item">
+            <i class="fas fa-code"></i> HTML/CSS/JS
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-calendar"></i> Jan 2024
+          </span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Minimalist</span>
+          <span class="tech-tag">Dark Theme</span>
+          <span class="tech-tag">Animation</span>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn view-details" data-project="blackcat">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+          <a href="https://github.com/syfaarizal/css-login-button" class="action-btn github">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a href="https://syfaarizal.github.io/css-login-button/" class="action-btn demo">
+            <i class="fas fa-external-link-alt"></i> Demo
+          </a>
         </div>
       </div>
     </div>
-    
-    <div class="card" data-category="gradient">
-      <span class="badge">Gradient</span>
-      <img src="./assets/img/login-page-panorama.png" alt="Gradient Login">
+
+    <!-- Card 2: Panorama Gradient -->
+    <div class="card" data-category="gradient" data-id="panorama">
+      <div class="card-badge">
+        <span class="badge gradient">Gradient</span>
+        <span class="badge popular">Popular</span>
+      </div>
+      <div class="card-image">
+        <img src="./assets/img/login-page-panorama.png" alt="Panorama Gradient Login" loading="lazy">
+        <div class="card-overlay">
+          <button class="quick-view" data-project="panorama">
+            <i class="fas fa-expand"></i> Quick View
+          </button>
+        </div>
+      </div>
       <div class="card-content">
-        <h3>Glowing transitions.</h3>
-        <p>A stylish login page featuring a modern gradient background, smooth hover effects, and glowing transitions to create a dynamic and engaging UI.</p>
-        <div class="tech-stack">HTML | CSS | JS | Gradient | Modern UI</div>
-        <div class="links">
-          <a href="https://github.com/syfaarizal/login-page-panorama" onclick="showDemo('gradient')">GitHub</a>
-          <a href="https://syfaarizal.github.io/login-page-panorama/" onclick="openDemoModal()">Live Demo</a>
+        <h3>Panorama Gradient</h3>
+        <p class="card-desc">Vibrant gradient transitions with glowing effects and modern UI.</p>
+        <div class="card-meta">
+          <span class="meta-item">
+            <i class="fas fa-code"></i> HTML/CSS/JS
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-calendar"></i> Dec 2023
+          </span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Gradient</span>
+          <span class="tech-tag">Modern UI</span>
+          <span class="tech-tag">Glow Effects</span>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn view-details" data-project="panorama">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+          <a href="https://github.com/syfaarizal/login-page-panorama" class="action-btn github">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <button class="action-btn demo" onclick="openDemoModal('panorama')">
+            <i class="fas fa-external-link-alt"></i> Demo
+          </button>
         </div>
       </div>
     </div>
-    
-    <div class="card" data-category="minimalist">
-      <span class="badge">Minimalist</span>
-      <img src="./assets/img/login-page-basic-purple.png" alt="Clean Login">
+
+    <!-- Card 3: Basic Purple Minimalist -->
+    <div class="card" data-category="minimalist" data-id="basic-purple">
+      <div class="card-badge">
+        <span class="badge minimalist">Minimalist</span>
+        <span class="badge new">New</span>
+      </div>
+      <div class="card-image">
+        <img src="./assets/img/login-page-basic-purple.png" alt="Basic Purple Login" loading="lazy">
+        <div class="card-overlay">
+          <button class="quick-view" data-project="basic-purple">
+            <i class="fas fa-expand"></i> Quick View
+          </button>
+        </div>
+      </div>
       <div class="card-content">
-        <h3>Ultra-minimal with focus on clarity.</h3>
-        <p>A clean and professional login/signup page with a split layout, strong typography, and seamless form interactions. Optimized for user clarity and accessibility.</p>
-        <div class="tech-stack">HTML | CSS | JS | Minimalist | UI/UX</div>
-        <div class="links">
-          <a href="https://github.com/syfaarizal/login-page-basic-purple" onclick="showDemo('clean')">GitHub</a>
-          <a href="https://syfaarizal.github.io/login-page-basic-purple/" onclick="showDemo('clean')">Live Demo</a>
+        <h3>Basic Purple</h3>
+        <p class="card-desc">Clean split layout with strong typography and seamless interactions.</p>
+        <div class="card-meta">
+          <span class="meta-item">
+            <i class="fas fa-code"></i> HTML/CSS/JS
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-calendar"></i> Feb 2024
+          </span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Minimalist</span>
+          <span class="tech-tag">Split Layout</span>
+          <span class="tech-tag">Typography</span>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn view-details" data-project="basic-purple">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+          <a href="https://github.com/syfaarizal/login-page-basic-purple" class="action-btn github">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a href="https://syfaarizal.github.io/login-page-basic-purple/" class="action-btn demo">
+            <i class="fas fa-external-link-alt"></i> Demo
+          </a>
         </div>
       </div>
     </div>
-    
-    <div class="card" data-category="gradient">
-      <span class="badge">Premium</span>
-      <img src="./assets/img/review-bg-astronaut.png" alt="Premium Login">
+
+    <!-- Card 4: Astronaut Premium -->
+    <div class="card" data-category="premium dark" data-id="astronaut">
+      <div class="card-badge">
+        <span class="badge premium">Premium</span>
+        <span class="badge featured">Featured</span>
+      </div>
+      <div class="card-image">
+        <img src="./assets/img/review-bg-astronaut.png" alt="Astronaut Premium Login" loading="lazy">
+        <div class="card-overlay">
+          <button class="quick-view" data-project="astronaut">
+            <i class="fas fa-expand"></i> Quick View
+          </button>
+        </div>
+      </div>
       <div class="card-content">
-        <h3>Premium Login</h3>
-        <p>High-end design with glassmorphism effects.</p>
-        <div class="tech-stack">HTML | CSS | JS | CDN</div>
-        <div class="links">
-          <a href="https://github.com/syfaarizal/astronaut-login-page" onclick="showDemo('premium')">GitHub</a>
-          <a href="https://syfaarizal.github.io/astronaut-login-page/" onclick="showDemo('premium')">Live Demo</a>
+        <h3>Astronaut Premium</h3>
+        <p class="card-desc">Glassmorphism effects with cosmic theme and premium animations.</p>
+        <div class="card-meta">
+          <span class="meta-item">
+            <i class="fas fa-code"></i> HTML/CSS/JS
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-calendar"></i> Nov 2023
+          </span>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Glassmorphism</span>
+          <span class="tech-tag">Premium</span>
+          <span class="tech-tag">Animation</span>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn view-details" data-project="astronaut">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+          <a href="https://github.com/syfaarizal/astronaut-login-page" class="action-btn github">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a href="https://syfaarizal.github.io/astronaut-login-page/" class="action-btn demo">
+            <i class="fas fa-external-link-alt"></i> Demo
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="design-notes">
-    <h2>Design Philosophy</h2>
-    <div class="note">✨ Before: Plain forms. After: Added micro-interactions and premium aesthetics.</div>
-    <div class="note">🎨 Before: Default styling. After: Custom gradients and thoughtful color schemes.</div>
+  <!-- Design Philosophy Section -->
+  <section class="design-section" id="design">
+    <div class="section-header">
+      <h2>Design <span class="accent">Philosophy</span></h2>
+      <p>The principles that guide every project</p>
+    </div>
+    <div class="design-grid">
+      <div class="design-card" data-aos="fade-up">
+        <div class="design-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3>User-Centered</h3>
+        <p>Every design starts with the user experience in mind. Clean, intuitive interfaces that feel natural.</p>
+      </div>
+      <div class="design-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="design-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Performance First</h3>
+        <p>Lightweight code with optimized animations ensures fast loading and smooth interactions.</p>
+      </div>
+      <div class="design-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="design-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Aesthetic Excellence</h3>
+        <p>Balancing beauty with functionality through thoughtful color schemes and typography.</p>
+      </div>
+      <div class="design-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="design-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>Clean Code</h3>
+        <p>Maintainable, well-documented code that's easy to understand and modify.</p>
+      </div>
+    </div>
+    
+    <div class="design-notes">
+      <div class="note" data-aos="fade-right">
+        <div class="note-header">
+          <span class="note-emoji">✨</span>
+          <h4>Before & After</h4>
+        </div>
+        <p><strong>Before:</strong> Plain, static forms with default styling.<br>
+        <strong>After:</strong> Added micro-interactions, smooth animations, and premium aesthetics that engage users.</p>
+      </div>
+      <div class="note" data-aos="fade-left">
+        <div class="note-header">
+          <span class="note-emoji">🎨</span>
+          <h4>Color Evolution</h4>
+        </div>
+        <p><strong>Before:</strong> Basic color schemes with limited visual hierarchy.<br>
+        <strong>After:</strong> Custom gradients, thoughtful color psychology, and dynamic theme switching.</p>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <h3 class="accent-primary">SICODER</h3>
-    <p><a href="https://github.com/">GitHub</a> | <a href="#" onclick="showContact()">Contact</a></p>
-    <p>"Crafting design, one login at a time."</p>
-  </footer>
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-content">
+      <div class="about-text" data-aos="fade-right">
+        <h2>Why <span class="accent">Login Pages?</span></h2>
+        <p>The login page is often the first interaction users have with an application. It sets the tone for the entire experience. That's why I focus on creating login pages that are not just functional, but memorable.</p>
+        <p>Each project in this collection solves specific design challenges while maintaining excellent user experience and modern coding practices.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-value">50+</span>
+            <span class="stat-label">Hours of Design</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">1000+</span>
+            <span class="stat-label">Lines of Code</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">4.8</span>
+            <span class="stat-label">Avg. Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual" data-aos="fade-left">
+        <div class="code-snippet">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-title">login-animation.js</span>
+          </div>
+          <pre><code>// Smooth login animation
+function animateLogin(form) {
+  form.style.transform = 'translateY(-10px)';
+  form.style.boxShadow = '0 15px 30px rgba(126, 11, 11, 0.3)';
+  
+  setTimeout(() => {
+    form.style.transform = 'translateY(0)';
+    form.style.boxShadow = '0 5px 15px rgba(126, 11, 11, 0.2)';
+  }, 300);
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details Modal -->
+  <div id="projectModal" class="project-modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div class="modal-body">
+        <!-- Content will be loaded dynamically -->
+      </div>
+    </div>
+  </div>
 
   <!-- Demo Modal -->
   <div id="demoModal" class="demo-modal">
     <div class="demo-content">
-      <span class="close-demo" onclick="closeDemoModal()">&times;</span>
-      <div class="demo-login">
-        <h3>Gradient Login Demo</h3>
-        <form class="demo-form" onsubmit="handleDemoLogin(event)">
-          <input type="text" class="demo-input" placeholder="Username" required>
-          <input type="password" class="demo-input" placeholder="Password" required>
-          <button type="submit" class="demo-btn">Sign In</button>
-        </form>
-        <div class="demo-forgot" onclick="showForgotPassword()">Forgot Password?</div>
+      <span class="close-demo">&times;</span>
+      <div class="demo-header">
+        <h3>Interactive Demo</h3>
+        <p>Experience the login flow with sample credentials</p>
+      </div>
+      <div class="demo-body">
+        <div class="demo-preview">
+          <!-- Demo content will be loaded here -->
+        </div>
+        <div class="demo-info">
+          <h4>Demo Credentials</h4>
+          <p><strong>Username:</strong> demo@sicoder.com</p>
+          <p><strong>Password:</strong> password123</p>
+          <div class="demo-tips">
+            <h5>Design Features:</h5>
+            <ul>
+              <li><i class="fas fa-check"></i> Smooth input animations</li>
+              <li><i class="fas fa-check"></i> Real-time validation</li>
+              <li><i class="fas fa-check"></i> Responsive design</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3 class="accent">SICODER</h3>
+        <p class="footer-tagline">"Crafting design, one login at a time."</p>
+        <div class="footer-social">
+          <a href="https://github.com/" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link" onclick="showContact()">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-codepen"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#showcase">Showcase</a>
+        <a href="#design">Design Philosophy</a>
+        <a href="#about">About</a>
+        <a href="#" onclick="showContact()">Contact</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get notified about new projects and design tips.</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 SICODER. All designs and code are open source.</p>
+      <p class="footer-note">Made with <i class="fas fa-heart"></i> by Syfa Arizal</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="./assets/js/particles.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/projectModal.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
