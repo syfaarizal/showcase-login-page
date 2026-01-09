@@ -184,6 +184,16 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 5px 15px var(--accent-glow);
 }
 
+.theme-toggle i {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  transition: all 0.3s;
+}
+
+.theme-toggle i:hover{
+  color: var(--accent-primary);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
