@@ -15,6 +15,7 @@ class SICODERApp {
     this.initContact();
     this.initNewsletter();
     this.bindEvents();
+    this.initSearch();
   }
 
   initTheme() {
@@ -87,6 +88,41 @@ class SICODERApp {
       if (btn) btn.click();
     }
   }
+
+  initSearch() {
+  const searchInput = document.getElementById('projectSearch');
+  const cards = document.querySelectorAll('.card');
+  const noResultMsg = document.createElement('div');
+  
+  noResultMsg.textContent = "Proyek tidak ditemukan 😔";
+  noResultMsg.style.cssText = "text-align: center; width: 100%; grid-column: 1/-1; padding: 2rem; display: none; color: var(--text-secondary);";
+  document.querySelector('.gallery').appendChild(noResultMsg);
+
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    let hasVisibleCard = false;
+
+    cards.forEach(card => {
+      // Ambil data untuk pencarian
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+      const tags = Array.from(card.querySelectorAll('.tech-tag')).map(t => t.textContent.toLowerCase()).join(' ');
+      const category = card.getAttribute('data-category');
+
+      // Cek apakah input cocok dengan konten
+      if (title.includes(term) || desc.includes(term) || tags.includes(term) || category.includes(term)) {
+        card.style.display = 'block';
+        card.style.animation = 'scaleIn 0.3s ease';
+        hasVisibleCard = true;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Tampilkan pesan jika kosong
+    noResultMsg.style.display = hasVisibleCard ? 'none' : 'block';
+  });
+}
 
   initSorting() {
     const sortSelect = document.getElementById('sortSelect');

@@ -166,6 +166,78 @@ class AnimationController {
   }
 }
 
+class TiltEffect {
+  constructor() {
+    this.cards = document.querySelectorAll('.card');
+    this.init();
+  }
+
+  init() {
+    this.cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => this.handleMove(e, card));
+      card.addEventListener('mouseleave', () => this.handleLeave(card));
+    });
+  }
+
+  handleMove(e, card) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // Posisi X kursor dalam elemen
+    const y = e.clientY - rect.top;  // Posisi Y kursor dalam elemen
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Hitung rotasi (maksimal 15 derajat)
+    const rotateX = ((y - centerY) / centerY) * -10; 
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    // Terapkan transformasi
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    card.style.zIndex = '10';
+    
+    // Efek Glare (Kilauan cahaya)
+    this.updateGlare(card, x, y);
+  }
+
+  handleLeave(card) {
+    // Reset posisi saat mouse keluar
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+    card.style.zIndex = '1';
+    
+    // Hilangkan glare
+    const glare = card.querySelector('.glare');
+    if (glare) glare.style.opacity = '0';
+  }
+
+  updateGlare(card, x, y) {
+    // Pastikan elemen .card memiliki overflow: hidden di CSS
+    let glare = card.querySelector('.glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'glare';
+      Object.assign(glare.style, {
+        position: 'absolute',
+        width: '200px',
+        height: '200px',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none',
+        opacity: '0',
+        transition: 'opacity 0.2s',
+        mixBlendMode: 'overlay'
+      });
+      card.appendChild(glare);
+    }
+    
+    glare.style.left = `${x - 100}px`;
+    glare.style.top = `${y - 100}px`;
+    glare.style.opacity = '1';
+  }
+}
+
+// Inisialisasi setelah DOM load
+document.addEventListener('DOMContentLoaded', () => new TiltEffect());
+
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   const animations = new AnimationController();

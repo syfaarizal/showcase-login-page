@@ -24,6 +24,13 @@
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem); 
+  --fs-h2: clamp(1.8rem, 4vw + 0.5rem, 3rem);
+  --fs-body: clamp(0.9rem, 2vw, 1.1rem);
+  --card-depth: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="light"] {
@@ -165,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 6rem 2rem 2rem;
+  padding: 6rem 6rem 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -177,8 +184,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
+  font-size: var(--fs-h1); 
+  letter-spacing: -0.02em;
 }
 
 .hero-title .accent {
@@ -280,8 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: var(--fs-h2);
 }
 
 .section-header p {
@@ -346,12 +352,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card {
-  background: var(--bg-secondary);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
+  background: rgba(26, 26, 26, 0.6); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  box-shadow: var(--card-depth);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+}
+
+[data-theme="light"] .card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card-badge {

@@ -10,8 +10,10 @@ class ParticleSystem {
   }
 
   init() {
+    this.isVisible = true;
     this.resizeCanvas();
     this.createParticles(50);
+    this.initIntersectionObserver();
     this.animate();
     this.bindEvents();
   }
@@ -102,9 +104,21 @@ class ParticleSystem {
   }
 
   animate() {
-    this.drawParticles();
+    if (this.isVisible) { // Tambahkan flag pengecekan
+      this.drawParticles();
+    }
     requestAnimationFrame(() => this.animate());
   }
+
+  initIntersectionObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      this.isVisible = entry.isIntersecting;
+    });
+  }, { threshold: 0 }); // Trigger segera setelah 1 pixel keluar/masuk
+
+  observer.observe(this.canvas);
+}
 
   bindEvents() {
     window.addEventListener('resize', () => {

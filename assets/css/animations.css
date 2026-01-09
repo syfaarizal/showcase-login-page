@@ -145,7 +145,7 @@
 
 .card-preview.dark {
   bottom: -30px;
-  left: 50%;
+  left: 40%;
   transform: translateX(-50%) rotate(3deg);
   animation: float 9s infinite ease-in-out;
   animation-delay: 0.5s;
