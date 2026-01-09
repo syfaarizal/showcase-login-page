@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 2px solid red; */
 }
 
 :root {
@@ -90,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-brand h1 {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   color: var(--accent-primary);
 }
 
@@ -165,6 +166,22 @@ h1, h2, h3, h4, h5, h6 {
   height: 3px;
   background: var(--text-primary);
   transition: all 0.3s;
+}
+
+.theme-toggle {
+  background: transparent;
+  display: flex;
+  gap: 10px;
+  border: 2px solid var(--border-color);
+  padding: 0.3rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--accent-glow);
 }
 
 /* Hero Section */
@@ -566,7 +583,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--accent-primary);
   color: white;
   padding: 1rem 2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .action-btn.secondary {
@@ -722,6 +739,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 15px;
   overflow: hidden;
   border: 1px solid var(--border-color);
+  width: 100%;
 }
 
 .code-header {
@@ -908,7 +926,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stat-card .stat-value {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--accent-primary);
   margin-bottom: 0.5rem;
@@ -916,7 +934,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stat-card .stat-label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 .project-actions {

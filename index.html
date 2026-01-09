@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./assets/css/animations.css">
   <link rel="stylesheet" href="./assets/css/particles.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <!-- <link rel="stylesheet" href="./assets/css/responsive.css"> -->
+  <link rel="stylesheet" href="./assets/css/responsive.css">
   <title>SICODER Showcase | Interactive Login Page Collection</title>
   <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
 </head>
@@ -32,26 +32,15 @@
     <div class="progress-bar"></div>
   </div>
 
-  <!-- Theme Toggle -->
-  <div class="theme-toggle">
-    <span class="theme-icon">☾</span>
-    <div class="switch" id="themeSwitch">
-      <div class="slider">
-        <i class="fas fa-moon"></i>
-      </div>
-    </div>
-    <span class="theme-icon">☀︎</span>
-  </div>
-
   <!-- Navigation -->
   <nav class="main-nav">
     <div class="nav-brand">
-      <h1>SICO<span class="accent">DER</span><span class="dot">.</span></h1>
+      <h1>SICO<span class="dot">DER</span><span class="accent">.</span></h1>
     </div>
     <div class="nav-links">
-      <a href="#" class="nav-link active" data-section="showcase">Showcase</a>
-      <a href="#" class="nav-link" data-section="design">Design</a>
-      <a href="#" class="nav-link" data-section="about">About</a>
+      <a href="#showcase" class="nav-link active" data-section="showcase">Showcase</a>
+      <a href="#design" class="nav-link" data-section="design">Design</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
       <button class="nav-cta" onclick="scrollToProjects()">Explore Projects</button>
     </div>
     <button class="menu-toggle">
@@ -59,6 +48,15 @@
       <span></span>
       <span></span>
     </button>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+      <div class="switch" id="themeSwitch">
+        <div class="slider">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </div>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero Section -->
@@ -497,7 +495,7 @@ function animateLogin(form) {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 SICODER. All designs and code are open source.</p>
+      <p>&copy; 2026 SICODER. All designs and code are open source.</p>
       <p class="footer-note">Made with <i class="fas fa-heart"></i> by Syfa Arizal</p>
     </div>
   </footer>

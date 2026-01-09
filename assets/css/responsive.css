@@ -9,6 +9,21 @@
 }
 
 /* ==========================================================================
+   LARGE DESKTOPS (1440px - 1920px) 
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .card-preview.gradient {
+    top: 190px;
+    right: 20px;
+  }
+
+  .card-preview.minimalist {
+    top: 130px;
+    right: 20px;
+  }
+}
+
+/* ==========================================================================
    SMALL MOBILE DEVICES (Portrait Phones, < 480px)
    ========================================================================== */
 @media (max-width: 479px) {
@@ -92,13 +107,7 @@
 
   /* Theme Toggle */
   .theme-toggle {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    padding: 8px 10px;
-    z-index: 1001;
-    background: var(--bg-secondary);
-    border: 2px solid var(--accent-primary);
+    display: none;
   }
 
   .theme-icon {
@@ -148,7 +157,8 @@
   }
 
   .hero-stats {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     gap: 1rem;
     margin: 2rem 0;
   }
@@ -192,18 +202,15 @@
   }
 
   .card-preview.minimalist {
-    top: 10px;
-    left: 10px;
+    display: none;
   }
 
   .card-preview.gradient {
-    top: 70px;
-    right: 10px;
+    display: none;
   }
 
   .card-preview.dark {
-    bottom: 10px;
-    left: calc(50% - 75px);
+    display: none;
   }
 
   /* Filter Section */
@@ -387,7 +394,8 @@
   }
 
   .about-stats {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     gap: 1.5rem;
   }
 
@@ -404,7 +412,9 @@
   }
 
   .code-snippet {
-    font-size: 0.8rem;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
   }
 
   .code-header {
@@ -748,6 +758,12 @@
   }
 }
 
+@media (max-width: 375px) {
+  .code-snippet {
+    width: 330px;
+  }
+}
+
 /* ==========================================================================
    TABLETS (768px - 991px)
    ========================================================================== */
@@ -841,125 +857,6 @@
     text-align: center;
     max-width: 500px;
     margin: 0 auto;
-  }
-}
-
-/* ==========================================================================
-   LAPTOPS (992px - 1199px)
-   ========================================================================== */
-@media (min-width: 992px) and (max-width: 1199px) {
-  /* Navigation */
-  .nav-links {
-    gap: 2rem;
-  }
-
-  /* Hero Section */
-  .hero {
-    padding: 8rem 3rem 5rem;
-  }
-
-  .hero-content {
-    max-width: 550px;
-  }
-
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-visual {
-    height: 350px;
-  }
-
-  /* Gallery Grid */
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.8rem;
-    padding: 2rem 3rem;
-  }
-
-  /* Design Section */
-  .design-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  /* About Section */
-  .about-content {
-    gap: 3rem;
-  }
-
-  /* Footer */
-  footer {
-    padding: 4rem 3rem 2rem;
-  }
-}
-
-/* ==========================================================================
-   DESKTOPS (1200px and above)
-   ========================================================================== */
-@media (min-width: 1200px) {
-  /* Hero Section */
-  .hero {
-    padding: 8rem 4rem 5rem;
-  }
-
-  .hero-content {
-    max-width: 600px;
-  }
-
-  .hero-title {
-    font-size: 3.5rem;
-  }
-
-  /* Gallery Grid */
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 3rem 4rem;
-  }
-
-  /* Design Section */
-  .design-section,
-  .about-section {
-    padding: 5rem 4rem;
-  }
-
-  /* Footer */
-  footer {
-    padding: 4rem 4rem 2rem;
-  }
-}
-
-/* ==========================================================================
-   LARGE DESKTOPS (1400px and above)
-   ========================================================================== */
-@media (min-width: 1400px) {
-  /* Container Max Width */
-  .gallery,
-  .filter-section,
-  .design-section,
-  .about-section,
-  .footer-content {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Hero Section */
-  .hero {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 10rem 6rem 6rem;
-  }
-
-  .hero-content {
-    max-width: 700px;
-  }
-
-  /* Gallery Grid */
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
-    padding: 3rem 6rem;
   }
 }
 
@@ -1078,7 +975,6 @@
    ========================================================================== */
 @media print {
   /* Hide non-essential elements */
-  .theme-toggle,
   .main-nav,
   .filter-section,
   .card-actions,
@@ -1249,43 +1145,6 @@
   
   .show-on-tablet {
     display: none !important;
-  }
-}
-
-/* ==========================================================================
-   FIXED ELEMENT SPACING FOR MOBILE
-   ========================================================================== */
-@media (max-width: 767px) {
-  /* Add padding to bottom for fixed elements */
-  body {
-    padding-bottom: 60px;
-  }
-
-  /* Ensure fixed elements don't overlap content */
-  .theme-toggle {
-    top: 70px;
-  }
-}
-
-/* ==========================================================================
-   CUSTOM SCROLLBAR (Desktop Only)
-   ========================================================================== */
-@media (min-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-secondary);
   }
 }
 
