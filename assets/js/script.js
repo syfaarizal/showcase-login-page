@@ -94,7 +94,7 @@ class SICODERApp {
   const cards = document.querySelectorAll('.card');
   const noResultMsg = document.createElement('div');
   
-  noResultMsg.textContent = "Proyek tidak ditemukan 😔";
+  noResultMsg.textContent = "No search results";
   noResultMsg.style.cssText = "text-align: center; width: 100%; grid-column: 1/-1; padding: 2rem; display: none; color: var(--text-secondary);";
   document.querySelector('.gallery').appendChild(noResultMsg);
 
