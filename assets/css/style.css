@@ -1171,21 +1171,26 @@ footer {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 50px;
-  height: 50px;
-  background: var(--accent-primary);
-  color: white;
+  background: transparent;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.back-to-top img {
+  width: 60px;
+  height: auto;
+  max-width: 30vw;
+  max-height: 30vh;
+  opacity: 0.8;
+  transition: all 0.3s;
 }
 
 .back-to-top.visible {
@@ -1193,8 +1198,7 @@ footer {
   visibility: visible;
 }
 
-.back-to-top:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--card-shadow);
+.back-to-top img:hover {
+  opacity: 1;
+  transform: scale(1.1) rotate(5deg);
 }
