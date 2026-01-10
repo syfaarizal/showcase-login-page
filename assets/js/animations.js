@@ -250,5 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       heroSubtitle.classList.remove('typing-text');
     }, text.length * 50 + 1000);
+    animations.createTypingEffect(heroSubtitle, text, 50);
   }
 });
