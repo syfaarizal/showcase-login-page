@@ -296,121 +296,6 @@ class SICODERApp {
     }
   }
 
-  openDemoModal(type) {
-    const modal = document.getElementById('demoModal');
-    if (!modal) return;
-
-    // Update demo content based on type
-    const preview = modal.querySelector('.demo-preview');
-    if (preview) {
-      preview.innerHTML = this.getDemoContent(type);
-    }
-
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  }
-
-  getDemoContent(type) {
-    const demos = {
-      panorama: `
-        <div class="demo-login">
-          <h4>Gradient Login Demo</h4>
-          <form class="demo-form">
-            <div class="input-group">
-              <label for="demo-email">Email</label>
-              <input type="email" id="demo-email" class="demo-input" placeholder="demo@sicoder.com" required>
-            </div>
-            <div class="input-group">
-              <label for="demo-password">Password</label>
-              <input type="password" id="demo-password" class="demo-input" placeholder="password123" required>
-            </div>
-            <div class="demo-options">
-              <label class="checkbox">
-                <input type="checkbox"> Remember me
-              </label>
-            </div>
-            <button type="submit" class="demo-btn">Sign In</button>
-          </form>
-          <div class="demo-alt">
-            <p>Or sign in with:</p>
-            <div class="social-login">
-              <button class="social-btn google">
-                <i class="fab fa-google"></i> Google
-              </button>
-              <button class="social-btn github">
-                <i class="fab fa-github"></i> GitHub
-              </button>
-            </div>
-          </div>
-        </div>
-      `,
-      default: `
-        <div class="demo-login">
-          <h4>Login Demo</h4>
-          <form class="demo-form">
-            <input type="text" class="demo-input" placeholder="Username" required>
-            <input type="password" class="demo-input" placeholder="Password" required>
-            <button type="submit" class="demo-btn">Sign In</button>
-          </form>
-          <div class="demo-forgot" onclick="showForgotPassword()">Forgot Password?</div>
-        </div>
-      `
-    };
-
-    return demos[type] || demos.default;
-  }
-
-  closeDemoModal() {
-    const modal = document.getElementById('demoModal');
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
-  }
-
-  handleDemoLogin(event) {
-    const form = event.target;
-    const inputs = form.querySelectorAll('.demo-input');
-    
-    // Animate inputs
-    inputs.forEach(input => {
-      input.style.borderColor = 'var(--accent-primary)';
-      input.style.transform = 'scale(1.02)';
-      input.style.boxShadow = '0 0 10px var(--accent-glow)';
-    });
-
-    // Simulate API call
-    setTimeout(() => {
-      this.showNotification('✅ Login successful! Welcome to the demo.', 'success');
-      this.closeDemoModal();
-      
-      // Reset form
-      inputs.forEach(input => {
-        input.value = '';
-        input.style.borderColor = '';
-        input.style.transform = '';
-        input.style.boxShadow = '';
-      });
-    }, 1000);
-  }
-
-  showForgotPassword() {
-    const modal = document.getElementById('demoModal');
-    const preview = modal.querySelector('.demo-preview');
-    
-    preview.innerHTML = `
-      <div class="demo-forgot-password">
-        <h4>Reset Password</h4>
-        <p>Enter your email to receive a reset link</p>
-        <form class="demo-form" onsubmit="handlePasswordReset(event)">
-          <input type="email" class="demo-input" placeholder="your@email.com" required>
-          <button type="submit" class="demo-btn">Send Reset Link</button>
-        </form>
-        <button class="back-to-login" onclick="showLoginForm()">
-          <i class="fas fa-arrow-left"></i> Back to Login
-        </button>
-      </div>
-    `;
-  }
-
   showContact() {
     const modal = document.createElement('div');
     modal.className = 'contact-modal';
@@ -643,12 +528,6 @@ function showContact() {
 function showForgotPassword() {
   if (window.sicoderApp) {
     window.sicoderApp.showForgotPassword();
-  }
-}
-
-function openDemoModal(type) {
-  if (window.sicoderApp) {
-    window.sicoderApp.openDemoModal(type);
   }
 }
 

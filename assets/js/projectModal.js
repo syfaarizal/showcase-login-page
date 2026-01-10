@@ -18,12 +18,12 @@ class ProjectModal {
         ],
         challenges: "Creating sufficient contrast in dark mode while maintaining aesthetic appeal was the main challenge. Solved by using carefully selected shades and subtle glow effects.",
         technologies: ["HTML5", "CSS3", "Vanilla JavaScript", "CSS Variables", "Flexbox/Grid"],
-        date: "January 2024",
+        date: "June 2025",
         github: "https://github.com/syfaarizal/css-login-button",
         demo: "https://syfaarizal.github.io/css-login-button/",
         designInspiration: "Inspired by modern productivity apps that prioritize focus and minimal distractions.",
         stats: {
-          linesOfCode: 450,
+          linesOfCode: 5697,
           developmentTime: "8 hours",
           performanceScore: "98/100",
           accessibility: "WCAG AA compliant"
@@ -42,12 +42,12 @@ class ProjectModal {
         ],
         challenges: "Achieving smooth gradient animations without performance issues. Solved by using CSS hardware acceleration and optimized gradient transitions.",
         technologies: ["HTML5", "CSS3", "JavaScript", "CSS Gradients", "CSS Animations"],
-        date: "December 2023",
+        date: "August 2025",
         github: "https://github.com/syfaarizal/login-page-panorama",
         demo: "https://syfaarizal.github.io/login-page-panorama/",
         designInspiration: "Inspired by sunset gradients and modern UI trends in web applications.",
         stats: {
-          linesOfCode: 520,
+          linesOfCode: 3184,
           developmentTime: "10 hours",
           performanceScore: "95/100",
           accessibility: "WCAG A compliant"
@@ -66,12 +66,12 @@ class ProjectModal {
         ],
         challenges: "Creating a responsive split layout that works well on mobile devices. Solved by using CSS Grid with fallbacks and thoughtful breakpoints.",
         technologies: ["HTML5", "CSS3", "JavaScript", "CSS Grid", "Responsive Design"],
-        date: "February 2024",
+        date: "September 2025",
         github: "https://github.com/syfaarizal/login-page-basic-purple",
         demo: "https://syfaarizal.github.io/login-page-basic-purple/",
         designInspiration: "Inspired by modern SaaS application interfaces that prioritize clarity and ease of use.",
         stats: {
-          linesOfCode: 380,
+          linesOfCode: 2362,
           developmentTime: "6 hours",
           performanceScore: "99/100",
           accessibility: "WCAG AA compliant"
@@ -90,14 +90,39 @@ class ProjectModal {
         ],
         challenges: "Implementing glassmorphism effects that work consistently across browsers. Solved by using backdrop-filter with fallbacks for unsupported browsers.",
         technologies: ["HTML5", "CSS3", "JavaScript", "Backdrop-filter", "CSS Custom Properties"],
-        date: "November 2023",
+        date: "December 2025",
         github: "https://github.com/syfaarizal/astronaut-login-page",
         demo: "https://syfaarizal.github.io/astronaut-login-page/",
         designInspiration: "Inspired by space exploration interfaces and premium design systems.",
         stats: {
-          linesOfCode: 620,
+          linesOfCode: 1425,
           developmentTime: "12 hours",
           performanceScore: "92/100",
+          accessibility: "WCAG A compliant"
+        }
+      },
+      pink: {
+        title: "Purple Pink Login & Signup UI",
+        description: "A modern login and signup interface with a purple–pink gradient theme and smooth UI interactions.",
+        longDescription: "This project focuses on building a clean and modern login & signup interface that feels premium without being overcomplicated. The purple–pink gradient gives the UI a strong visual identity, while responsive layouts ensure the experience stays consistent across desktop and mobile devices. Animations and transitions are applied subtly to enhance usability, not distract from it.",
+        features: [
+          "Responsive login & signup layout",
+          "Purple–pink gradient theme",
+          "Clean and readable form structure",
+          "Subtle hover and transition effects",
+          "Clear call-to-action buttons",
+          "Mobile-friendly design"
+        ],
+        challenges: "Maintaining consistent gradients and layout behavior across desktop and mobile breakpoints without overcomplicating the CSS structure.",
+        technologies: ["HTML5", "CSS3", "JavaScript", "CSS Gradients", "Responsive Design"],
+        date: "January 2026",
+        github: "https://github.com/syfaarizal/login-signup-page",
+        demo: "https://syfaarizal.github.io/login-signup-page/",
+        designInspiration: "Inspired by modern and clean UI, user-first layout, premium look without heavy assets, and easy integration into real products",
+        stats: {
+          linesOfCode: 1175,
+          developmentTime: "12 hours",
+          performanceScore: "Smooth & lightweight",
           accessibility: "WCAG A compliant"
         }
       }
