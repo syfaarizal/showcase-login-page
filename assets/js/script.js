@@ -229,7 +229,7 @@ class SICODERApp {
     // Contact info display
     this.contactInfo = {
       email: 'syifairgi@gmail.com',
-      github: 'https://github.com/',
+      github: 'https://github.com/syfaarizal',
       message: "💬 Let's create something amazing together!"
     };
   }
