@@ -8,6 +8,7 @@ class SICODERApp {
 
   init() {
     this.initTheme();
+    this.initScrollReveal();
     this.initFiltering();
     this.initSorting();
     this.initModals();
@@ -19,35 +20,49 @@ class SICODERApp {
   }
 
   initTheme() {
-    const themeSwitch = document.getElementById('themeSwitch');
+    const themeToggle = document.getElementById('themeToggle'); // Ambil container luar
     const body = document.body;
-    const slider = themeSwitch.querySelector('.slider');
 
-    // Set initial theme
+    // Set initial state
     if (this.currentTheme === 'light') {
       body.setAttribute('data-theme', 'light');
-      themeSwitch.classList.add('active');
+      themeToggle.classList.add('active');
     }
 
-    themeSwitch.addEventListener('click', () => {
-      themeSwitch.classList.add('pulse');
-      setTimeout(() => themeSwitch.classList.remove('pulse'), 300);
-
-      if (body.getAttribute('data-theme') === 'light') {
+    themeToggle.addEventListener('click', () => {
+      const isLight = body.getAttribute('data-theme') === 'light';
+      
+      if (isLight) {
         body.removeAttribute('data-theme');
-        themeSwitch.classList.remove('active');
+        themeToggle.classList.remove('active');
         localStorage.setItem('theme', 'dark');
       } else {
         body.setAttribute('data-theme', 'light');
-        themeSwitch.classList.add('active');
+        themeToggle.classList.add('active');
         localStorage.setItem('theme', 'light');
       }
-
-      // Dispatch theme change event
-      document.dispatchEvent(new CustomEvent('themechange', {
-        detail: { theme: body.getAttribute('data-theme') || 'dark' }
-      }));
     });
+  }
+
+  initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      reveals.forEach(windowElement => {
+        const windowHeight = window.innerHeight;
+        const elementTop = windowElement.getBoundingClientRect().top;
+        const elementVisible = 150; 
+
+        if (elementTop < windowHeight - elementVisible) {
+          windowElement.classList.add('active');
+        } else {
+          windowElement.classList.remove('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Jalankan sekali saat load
   }
 
   initFiltering() {

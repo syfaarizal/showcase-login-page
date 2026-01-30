@@ -194,6 +194,35 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-primary);
 }
 
+.theme-toggle .switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+
+.theme-toggle .slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle.active .slider {
+  transform: translateX(10px);
+}
+
+/* --- Animasi Fade In/Out saat Scroll --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
