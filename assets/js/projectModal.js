@@ -96,7 +96,7 @@ class ProjectModal {
         designInspiration: "Inspired by space exploration interfaces and premium design systems.",
         stats: {
           linesOfCode: 1425,
-          developmentTime: "12 hours",
+          developmentTime: "4 hours",
           performanceScore: "92/100",
           accessibility: "WCAG A compliant"
         }
@@ -121,7 +121,32 @@ class ProjectModal {
         designInspiration: "Inspired by modern and clean UI, user-first layout, premium look without heavy assets, and easy integration into real products",
         stats: {
           linesOfCode: 1175,
-          developmentTime: "12 hours",
+          developmentTime: "8 hours",
+          performanceScore: "Smooth & lightweight",
+          accessibility: "WCAG A compliant"
+        }
+      },
+      'red-rose': {
+        title: "Red Rose Login Page",
+        description: "A modern login page with a red rose theme and clean layout.",
+        longDescription: "This project presents a visually appealing login page themed around the elegance of red roses. The design emphasizes simplicity and user-friendliness, ensuring that users can easily navigate the login process while enjoying the aesthetic elements inspired by roses.",
+        features: [
+          "Red rose theme",
+          "Clean layout",
+          "Responsive design",
+          "Clear call-to-action buttons",
+          "Smooth animations",
+          "Cross-browser compatibility"
+        ],
+        challenges: "Creating a visually appealing login page with a red rose theme. Solved by using CSS gradients and animations to create depth and visual interest.",
+        technologies: ["React", "Tailwind CSS", "Lucide React", "Responsive Design"],
+        date: "January 2026",
+        github: "https://github.com/syfaarizal/login-page-red",
+        demo: "https://login-page-red-six.vercel.app/",
+        designInspiration: "Inspired by modern UI trends and the elegance of red roses.",
+        stats: {
+          linesOfCode: 7321,
+          developmentTime: "7 hours",
           performanceScore: "Smooth & lightweight",
           accessibility: "WCAG A compliant"
         }
