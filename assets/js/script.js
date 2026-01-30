@@ -9,6 +9,7 @@ class SICODERApp {
   init() {
     this.initTheme();
     this.initScrollReveal();
+    this.initStaggeredCards();
     this.initFiltering();
     this.initSorting();
     this.initModals();
@@ -63,6 +64,16 @@ class SICODERApp {
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Jalankan sekali saat load
+  }
+
+  initStaggeredCards() {
+    const cards = document.querySelectorAll('.gallery .card');
+    
+    cards.forEach((card, index) => {
+      card.style.setProperty('--d', `${index * 100}ms`);
+      
+      card.classList.add('reveal');
+    });
   }
 
   initFiltering() {
