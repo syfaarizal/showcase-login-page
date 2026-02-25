@@ -150,6 +150,31 @@ class ProjectModal {
           performanceScore: "Smooth & lightweight",
           accessibility: "WCAG A compliant"
         }
+      },
+      'otakore': {
+        title: "Otakore Login Page",
+        description: "A modern login page with a vibrant otakore theme and clean layout.",
+        longDescription: "This project features a visually striking login page inspired by the vibrant and dynamic world of otakore. The design incorporates bold colors and playful elements to create an engaging user experience while maintaining a clean and intuitive layout.",
+        features: [
+          "Vibrant otakore theme",
+          "Clean layout",
+          "Responsive design",
+          "Clear call-to-action buttons",
+          "Smooth animations",
+          "Cross-browser compatibility"
+        ],
+        challenges: "Realizing the idea of creating a login page with anime characters, suitable for anime-themed landing pages or portfolios. Solved by using vibrant colors and playful design elements to capture the essence of otakore while ensuring usability.",
+        technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+        date: "January 2026",
+        github: "https://github.com/syfaarizal/login-page-otakore",
+        demo: "https://otakore.vercel.app/",
+        designInspiration: "Inspired by the vibrant and dynamic world of otakore.",
+        stats: {
+          linesOfCode: 17631,
+          developmentTime: "6 hours",
+          performanceScore: "Smooth & lightweight",
+          accessibility: "WCAG A compliant"
+        }
       }
     };
     this.init();
