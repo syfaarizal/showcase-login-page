@@ -166,7 +166,7 @@ class ProjectModal {
         challenges: "Realizing the idea of creating a login page with anime characters, suitable for anime-themed landing pages or portfolios. Solved by using vibrant colors and playful design elements to capture the essence of otakore while ensuring usability.",
         technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
         date: "January 2026",
-        github: "https://github.com/syfaarizal/login-page-otakore",
+        github: "https://github.com/syfaarizal/otakore-login-page",
         demo: "https://otakore.vercel.app/",
         designInspiration: "Inspired by the vibrant and dynamic world of otakore.",
         stats: {
