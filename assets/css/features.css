@@ -1,9 +1,3 @@
-/* ============================================================
-   FEATURES SECTION — Unified Auth Login Gate
-   Uses CSS custom-property tokens already defined in style.css
-   ============================================================ */
-
-/* ── Section shell ─────────────────────────────────────────── */
 .features-section {
   padding: 6rem 2rem 7rem;
   position: relative;
@@ -21,7 +15,6 @@
   pointer-events: none;
 }
 
-/* ── Two-column intro layout ────────────────────────────────── */
 .features-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -31,7 +24,6 @@
   align-items: center;
 }
 
-/* ── Left side — copy ───────────────────────────────────────── */
 .features-intro-text {
   display: flex;
   flex-direction: column;
@@ -61,7 +53,6 @@
   line-height: 1.7;
 }
 
-/* ── Credentials hint box ───────────────────────────────────── */
 .features-credential-hint {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -133,7 +124,6 @@
   color: var(--success);
 }
 
-/* ── Feature badge list ─────────────────────────────────────── */
 .features-badge-list {
   list-style: none;
   display: flex;
@@ -166,7 +156,6 @@
   box-shadow: 0 0 0 3px rgba(126,11,11,0.08);
 }
 
-/* ── Auth gate card ─────────────────────────────────────────── */
 .auth-gate-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -192,7 +181,6 @@
   padding: 2.2rem 2rem;
 }
 
-/* ── Gate header ────────────────────────────────────────────── */
 .auth-gate-header {
   text-align: center;
   margin-bottom: 1.8rem;
@@ -224,7 +212,6 @@
   color: var(--text-muted);
 }
 
-/* ── Social buttons ─────────────────────────────────────────── */
 .social-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -275,7 +262,6 @@
   pointer-events: none;
 }
 
-/* ── Divider ────────────────────────────────────────────────── */
 .social-divider {
   display: flex;
   align-items: center;
@@ -293,7 +279,6 @@
   background: var(--border-color);
 }
 
-/* ── Form groups ────────────────────────────────────────────── */
 .auth-form-group {
   margin-bottom: 1.1rem;
 }
@@ -332,7 +317,6 @@
   box-shadow: 0 0 0 3px rgba(126,11,11,0.13);
 }
 
-/* Validation states */
 .auth-input.is-error {
   border-color: var(--error);
   background: rgba(239,68,68,0.04);
@@ -351,7 +335,6 @@
   box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
 }
 
-/* Trailing icons */
 .validation-icon {
   position: absolute;
   right: 0.9rem;
@@ -368,7 +351,6 @@
 .auth-form-group.has-error   label         { color: var(--error);   }
 .auth-form-group.has-success label         { color: var(--success); }
 
-/* Field messages */
 .field-message {
   font-size: 0.75rem;
   margin-top: 0.3rem;
@@ -382,7 +364,6 @@
 .field-message.error   { color: var(--error);   }
 .field-message.success { color: var(--success);  }
 
-/* ── Password toggle ────────────────────────────────────────── */
 .pw-toggle-btn {
   position: absolute;
   right: 0.8rem;
@@ -405,7 +386,6 @@
 .pw-toggle-btn.visible .fa-eye       { display: none; }
 .pw-toggle-btn.visible .fa-eye-slash { display: inline; }
 
-/* ── Strength meter ─────────────────────────────────────────── */
 .pw-strength {
   margin-top: 0.5rem;
 }
@@ -439,7 +419,6 @@
 .pw-strength-label[data-strength="fair"]   { color: var(--warning); }
 .pw-strength-label[data-strength="strong"] { color: var(--success); }
 
-/* ── Remember row ───────────────────────────────────────────── */
 .remember-row {
   display: flex;
   align-items: center;
@@ -506,7 +485,6 @@
   text-decoration: underline;
 }
 
-/* ── Submit button ──────────────────────────────────────────── */
 .auth-btn {
   width: 100%;
   padding: 0.82rem 1.5rem;
@@ -536,7 +514,6 @@
 
 .auth-btn:active:not(:disabled) { transform: translateY(0); }
 
-/* Disabled state */
 .auth-btn:disabled {
   background: var(--bg-tertiary);
   color: var(--text-muted);
@@ -546,7 +523,6 @@
   border: 1.5px solid var(--border-color);
 }
 
-/* Loading state */
 .auth-btn.is-loading { pointer-events: none; opacity: 0.88; }
 
 .btn-spinner {
@@ -564,13 +540,11 @@
 .auth-btn.is-loading .btn-spinner { display: block; }
 .auth-btn.is-loading .btn-label   { opacity: 0.75;  }
 
-/* Success state */
 .auth-btn.is-success {
   background: var(--success);
   pointer-events: none;
 }
 
-/* Ripple */
 .btn-ripple {
   position: absolute;
   border-radius: 50%;
@@ -582,7 +556,6 @@
 
 @keyframes gateRipple { to { transform: scale(4); opacity: 0; } }
 
-/* ── Error banner ───────────────────────────────────────────── */
 .auth-error-banner {
   display: flex;
   align-items: center;
@@ -604,7 +577,6 @@
   40%, 60% { transform: translateX( 3px); }
 }
 
-/* ── Footnote ───────────────────────────────────────────────── */
 .auth-gate-footnote {
   text-align: center;
   font-size: 0.72rem;
@@ -612,7 +584,6 @@
   margin-top: 1rem;
 }
 
-/* ── Forgot password toast ──────────────────────────────────── */
 .forgot-toast {
   position: absolute;
   bottom: 1.5rem;
@@ -636,7 +607,6 @@
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── Success overlay ────────────────────────────────────────── */
 .auth-success-overlay {
   position: absolute;
   inset: 0;
@@ -729,7 +699,6 @@
 
 .auth-reset-link:hover { color: var(--text-secondary); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .features-intro {
     grid-template-columns: 1fr;
@@ -745,4 +714,18 @@
   .social-grid      { grid-template-columns: 1fr; }
   .auth-gate-inner  { padding: 1.6rem 1.4rem; }
   .features-section { padding: 4rem 1.2rem 5rem; }
+}
+
+@keyframes gatePulse {
+  0%   { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 0   rgba(126,11,11,0.5); }
+  50%  { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 12px rgba(126,11,11,0.15); }
+  100% { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 0   rgba(126,11,11,0); }
+}
+
+.auth-gate-card.gate-pulse {
+  animation: gatePulse 0.7s ease-out both;
+}
+
+.action-btn.demo {
+  cursor: pointer;
 }
