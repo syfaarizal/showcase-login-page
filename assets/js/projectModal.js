@@ -295,9 +295,9 @@ class ProjectModal {
             <a href="${project.github}" target="_blank" class="action-btn primary">
               <i class="fab fa-github"></i> View Code on GitHub
             </a>
-            <a href="${project.demo}" target="_blank" class="action-btn secondary">
+            <button class="action-btn secondary modal-demo-btn" data-demo-url="${project.demo}">
               <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
+            </button>
             <button class="action-btn tertiary close-modal">
               <i class="fas fa-times"></i> Close Details
             </button>
@@ -308,6 +308,20 @@ class ProjectModal {
 
     // Add event listener to close button in content
     this.modalContent.querySelector('.close-modal').addEventListener('click', () => this.close());
+
+    // Intercept Live Demo button — check auth gate first
+    const demoBtn = this.modalContent.querySelector('.modal-demo-btn');
+    if (demoBtn) {
+      demoBtn.addEventListener('click', () => {
+        const url = demoBtn.getAttribute('data-demo-url');
+        if (window.authGate && !window.authGate.isAuthed()) {
+          this.close();
+          window.authGate.requestDemo(url);
+        } else {
+          window.open(url, '_blank', 'noopener');
+        }
+      });
+    }
   }
 }
 

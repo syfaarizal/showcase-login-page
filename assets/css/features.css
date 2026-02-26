@@ -317,6 +317,7 @@
   box-shadow: 0 0 0 3px rgba(126,11,11,0.13);
 }
 
+/* Validation states */
 .auth-input.is-error {
   border-color: var(--error);
   background: rgba(239,68,68,0.04);
@@ -335,6 +336,7 @@
   box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
 }
 
+/* Trailing icons */
 .validation-icon {
   position: absolute;
   right: 0.9rem;
@@ -351,6 +353,7 @@
 .auth-form-group.has-error   label         { color: var(--error);   }
 .auth-form-group.has-success label         { color: var(--success); }
 
+/* Field messages */
 .field-message {
   font-size: 0.75rem;
   margin-top: 0.3rem;
@@ -514,6 +517,7 @@
 
 .auth-btn:active:not(:disabled) { transform: translateY(0); }
 
+/* Disabled state */
 .auth-btn:disabled {
   background: var(--bg-tertiary);
   color: var(--text-muted);
@@ -523,6 +527,7 @@
   border: 1.5px solid var(--border-color);
 }
 
+/* Loading state */
 .auth-btn.is-loading { pointer-events: none; opacity: 0.88; }
 
 .btn-spinner {
@@ -540,11 +545,13 @@
 .auth-btn.is-loading .btn-spinner { display: block; }
 .auth-btn.is-loading .btn-label   { opacity: 0.75;  }
 
+/* Success state */
 .auth-btn.is-success {
   background: var(--success);
   pointer-events: none;
 }
 
+/* Ripple */
 .btn-ripple {
   position: absolute;
   border-radius: 50%;
@@ -727,5 +734,123 @@
 }
 
 .action-btn.demo {
+  cursor: pointer;
+}
+
+.gate-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-secondary);
+  max-width: 340px;
+  width: calc(100vw - 3rem);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gate-notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Colour variants */
+.gate-notification.info {
+  border-color: var(--accent-primary);
+  background: rgba(126,11,11,0.06);
+}
+
+.gate-notification.success {
+  border-color: var(--success);
+  background: rgba(16,185,129,0.06);
+}
+
+.gate-notification.error {
+  border-color: var(--error);
+  background: rgba(239,68,68,0.06);
+}
+
+.gate-notif-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+  background: rgba(126,11,11,0.12);
+  color: var(--accent-secondary);
+}
+
+.gate-notification.success .gate-notif-icon {
+  background: rgba(16,185,129,0.12);
+  color: var(--success);
+}
+
+.gate-notification.error .gate-notif-icon {
+  background: rgba(239,68,68,0.12);
+  color: var(--error);
+}
+
+.gate-notif-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.gate-notif-title {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.gate-notif-msg {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.gate-notif-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding: 0.1rem 0.2rem;
+  transition: color 0.2s;
+  flex-shrink: 0;
+  line-height: 1;
+  align-self: flex-start;
+}
+
+.gate-notif-close:hover { color: var(--text-primary); }
+
+@keyframes gatePulse {
+  0%   { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 0    rgba(126,11,11,0.55); }
+  50%  { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 14px rgba(126,11,11,0.15); }
+  100% { box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 0    rgba(126,11,11,0);    }
+}
+
+.auth-gate-card.gate-pulse {
+  animation: gatePulse 0.75s ease-out both;
+}
+
+button.action-btn.demo,
+button.action-btn.secondary,
+button.modal-demo-btn {
   cursor: pointer;
 }

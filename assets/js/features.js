@@ -1,16 +1,10 @@
-// ============================================================
-//  Features Section — Unified Auth Login Gate Controller
-//  Demo credentials: demo@sicoder.dev / SiCoder@2026
-// ============================================================
-
 class AuthGate {
   constructor() {
-    this.DEMO_EMAIL    = 'demo@sicoder.dev';
-    this.DEMO_PW       = 'SiCoder@2026';
-    this.SESSION_KEY   = 'sicoder_authed';
-    this.PENDING_KEY   = 'sicoder_pending_demo';
+    this.DEMO_EMAIL  = 'demo@sicoder.dev';
+    this.DEMO_PW     = 'SiCoder@2026';
+    this.SESSION_KEY = 'sicoder_authed';
+    this.PENDING_KEY = 'sicoder_pending_demo';
 
-    // Form elements
     this.emailInput   = document.getElementById('gate-email');
     this.pwInput      = document.getElementById('gate-pw');
     this.submitBtn    = document.getElementById('gateSubmitBtn');
@@ -32,8 +26,38 @@ class AuthGate {
     this.init();
   }
 
+  isAuthed() {
+    return sessionStorage.getItem(this.SESSION_KEY) === 'true';
+  }
+
+  requestDemo(url) {
+    if (this.isAuthed()) {
+      window.open(url, '_blank', 'noopener');
+      return;
+    }
+
+    sessionStorage.setItem(this.PENDING_KEY, url);
+    this.updateOverlayCta(url);
+
+    const section = document.getElementById('features');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    setTimeout(() => {
+      this.showNotification(
+        '🔒 Sign in required',
+        'Fill out the demo login form below to open this demo page.',
+        'info'
+      );
+      this.pulseGateCard();
+      this.emailInput.focus({ preventScroll: true });
+    }, 700);
+  }
+
   init() {
-    this.bindDemoBtns();        // intercept all card Demo buttons
+    this.createNotificationEl();
+    this.bindDemoBtns();
     this.bindEmail();
     this.bindPassword();
     this.bindSubmit();
@@ -45,84 +69,88 @@ class AuthGate {
     this.bindReset();
     this.bindRipple();
     this.restoreRemember();
-    this.checkAlreadyAuthed(); // restore session if previously logged in
+    this.checkAlreadyAuthed();
   }
 
-  // Demo button intercept 
-  bindDemoBtns() {
-    document.querySelectorAll('.demo-gate-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const url = btn.getAttribute('data-demo-url');
+  createNotificationEl() {
+    const el = document.createElement('div');
+    el.id = 'gateNotification';
+    el.className = 'gate-notification';
+    el.innerHTML = `
+      <div class="gate-notif-icon"><i class="fas fa-lock"></i></div>
+      <div class="gate-notif-body">
+        <strong class="gate-notif-title"></strong>
+        <span class="gate-notif-msg"></span>
+      </div>
+      <button class="gate-notif-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    `;
+    el.querySelector('.gate-notif-close').addEventListener('click', () => this.hideNotification());
 
-        if (sessionStorage.getItem(this.SESSION_KEY) === 'true') {
-          // Already authenticated — open demo directly
-          window.open(url, '_blank', 'noopener');
-          return;
-        }
+    document.body.appendChild(el);
+    this.notifEl = el;
+  }
 
-        // Store pending URL then scroll to the gate
-        sessionStorage.setItem(this.PENDING_KEY, url);
+  showNotification(title, msg, type = 'info') {
+    if (!this.notifEl) return;
+    this.notifEl.className = `gate-notification show ${type}`;
+    this.notifEl.querySelector('.gate-notif-title').textContent = title;
+    this.notifEl.querySelector('.gate-notif-msg').textContent   = msg;
+    // Update icon per type
+    const iconMap = { info: 'fa-lock', success: 'fa-circle-check', error: 'fa-circle-exclamation' };
+    this.notifEl.querySelector('.gate-notif-icon i').className = `fas ${iconMap[type] || 'fa-lock'}`;
 
-        // Visually highlight the gate card with a pulse
-        this.pulseGateCard();
+    clearTimeout(this._notifTimer);
+    this._notifTimer = setTimeout(() => this.hideNotification(), 6000);
+  }
 
-        // Smooth scroll to #features
-        const section = document.getElementById('features');
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // Update overlay CTA to open the specific pending demo
-        this.updateOverlayCta(url);
-      });
-    });
+  hideNotification() {
+    if (!this.notifEl) return;
+    this.notifEl.classList.remove('show');
   }
 
   pulseGateCard() {
     const card = document.getElementById('authGateCard');
     if (!card) return;
     card.classList.remove('gate-pulse');
-    void card.offsetWidth; // reflow
+    void card.offsetWidth;
     card.classList.add('gate-pulse');
     card.addEventListener('animationend', () => card.classList.remove('gate-pulse'), { once: true });
   }
 
-  // Update the success overlay CTA to open the pending demo
+  bindDemoBtns() {
+    document.querySelectorAll('.demo-gate-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-demo-url');
+        this.requestDemo(url);
+      });
+    });
+  }
+
   updateOverlayCta(url) {
     const cta = document.querySelector('.auth-btn-success-cta');
     if (!cta) return;
     if (url) {
-      cta.setAttribute('href', '#');
-      cta.setAttribute('data-pending-url', url);
-      cta.onclick = (e) => {
-        e.preventDefault();
-        window.open(url, '_blank', 'noopener');
-      };
+      cta.onclick = (e) => { e.preventDefault(); window.open(url, '_blank', 'noopener'); };
       cta.innerHTML = '<i class="fas fa-external-link-alt"></i> Buka Demo Sekarang';
     } else {
-      cta.setAttribute('href', '#showcase');
-      cta.removeAttribute('data-pending-url');
       cta.onclick = null;
+      cta.setAttribute('href', '#showcase');
       cta.innerHTML = '<i class="fas fa-arrow-down"></i> Lihat Showcase';
     }
   }
 
-  // Restore auth session — if already logged in, skip showing gate
   checkAlreadyAuthed() {
-    if (sessionStorage.getItem(this.SESSION_KEY) === 'true') {
-      this.showSuccessOverlay(false); // show overlay silently, no animation
+    if (this.isAuthed()) {
+      this.showSuccessOverlay(false);
     }
   }
 
-  // ── Email live validation 
   bindEmail() {
     const emailMsg = this.emailGroup.querySelector('.field-message');
 
     this.emailInput.addEventListener('input', () => {
       this.hideError();
       const val = this.emailInput.value.trim();
-
       if (!val) {
         this.clearGroup(this.emailGroup, this.emailInput, emailMsg);
       } else if (this.isValidEmail(val)) {
@@ -144,20 +172,17 @@ class AuthGate {
 
   isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
-  // ── Password: toggle + strength + validation 
   bindPassword() {
     const pwMsg = this.pwGroup.querySelector('.field-message');
 
     this.pwInput.addEventListener('input', () => {
       this.hideError();
       const val = this.pwInput.value;
-
       if (!val) {
         this.clearGroup(this.pwGroup, this.pwInput, pwMsg);
         this.hideStrength();
       } else {
-        const s = this.calcStrength(val);
-        this.showStrength(s);
+        this.showStrength(this.calcStrength(val));
         if (val.length >= 6) {
           this.setSuccess(this.pwGroup, this.pwInput, pwMsg, '');
         } else {
@@ -195,7 +220,6 @@ class AuthGate {
     this.strengthLbl.textContent = '';
   }
 
-  // ── Password toggle 
   bindPasswordToggle() {
     if (!this.pwToggle) return;
     this.pwToggle.addEventListener('click', () => {
@@ -206,7 +230,6 @@ class AuthGate {
     });
   }
 
-  // ── Remember me 
   bindRemember() {
     this.rememberBox.addEventListener('change', () => {
       sessionStorage.setItem('sicoder_remember', this.rememberBox.checked);
@@ -220,12 +243,10 @@ class AuthGate {
     if (saved) this.lightBadge('badge-remember', true);
   }
 
-  // ── Submit / Loading / Disabled 
   updateSubmitState() {
-    const emailOk = this.isValidEmail(this.emailInput.value.trim());
-    const pwOk    = this.pwInput.value.length >= 6;
-    this.submitBtn.disabled = !(emailOk && pwOk);
-    this.lightBadge('badge-disabled', !(emailOk && pwOk));
+    const ok = this.isValidEmail(this.emailInput.value.trim()) && this.pwInput.value.length >= 6;
+    this.submitBtn.disabled = !ok;
+    this.lightBadge('badge-disabled', !ok);
   }
 
   bindSubmit() {
@@ -249,32 +270,28 @@ class AuthGate {
       this.submitBtn.classList.remove('is-loading');
 
       if (email === this.DEMO_EMAIL && pw === this.DEMO_PW) {
-        // ── SUCCESS 
         label.textContent = '✓ Access Granted';
         this.submitBtn.classList.add('is-success');
-        const pwMsg = this.pwGroup.querySelector('.field-message');
-        this.setSuccess(this.pwGroup, this.pwInput, pwMsg, 'Correct!');
+        this.setSuccess(this.pwGroup, this.pwInput, this.pwGroup.querySelector('.field-message'), 'Correct!');
         this.lightBadge('badge-loading', false);
-
-        // Persist auth in session
         sessionStorage.setItem(this.SESSION_KEY, 'true');
+        this.hideNotification();
 
-        // Update overlay CTA if there's a pending demo URL
         const pending = sessionStorage.getItem(this.PENDING_KEY);
         this.updateOverlayCta(pending || null);
-
         setTimeout(() => this.showSuccessOverlay(true), 600);
 
       } else {
-        // ── WRONG CREDENTIALS 
         label.textContent = 'Sign In';
 
         if (email !== this.DEMO_EMAIL) {
-          const emailMsg = this.emailGroup.querySelector('.field-message');
-          this.setError(this.emailGroup, this.emailInput, emailMsg, 'No account found with this email.');
+          this.setError(this.emailGroup, this.emailInput,
+            this.emailGroup.querySelector('.field-message'),
+            'No account found with this email.');
         } else {
-          const pwMsg = this.pwGroup.querySelector('.field-message');
-          this.setError(this.pwGroup, this.pwInput, pwMsg, 'Incorrect password.');
+          this.setError(this.pwGroup, this.pwInput,
+            this.pwGroup.querySelector('.field-message'),
+            'Incorrect password.');
           this.showStrength(this.calcStrength(pw));
         }
 
@@ -283,26 +300,20 @@ class AuthGate {
         this.lightBadge('badge-loading', false);
         this.lightBadge('badge-validation');
 
-        setTimeout(() => {
-          this.submitBtn.disabled = false;
-          this.updateSubmitState();
-        }, 2000);
+        setTimeout(() => { this.submitBtn.disabled = false; this.updateSubmitState(); }, 2000);
       }
     }, 1800);
   }
 
-  // ── Success overlay 
   showSuccessOverlay(animate = true) {
     if (!animate) {
       this.overlay.style.transition = 'none';
-    }
-    this.overlay.classList.add('show');
-    if (!animate) {
+      this.overlay.classList.add('show');
       void this.overlay.offsetWidth;
       this.overlay.style.transition = '';
+    } else {
+      this.overlay.classList.add('show');
     }
-
-    // Light all badges
     ['badge-social','badge-validation','badge-toggle','badge-strength',
      'badge-remember','badge-loading','badge-disabled'].forEach(id => {
       const el = document.getElementById(id);
@@ -310,7 +321,6 @@ class AuthGate {
     });
   }
 
-  // ── Reset 
   bindReset() {
     if (!this.resetBtn) return;
     this.resetBtn.addEventListener('click', () => {
@@ -323,27 +333,21 @@ class AuthGate {
       this.pwInput.type     = 'password';
       if (this.pwToggle) this.pwToggle.classList.remove('visible');
 
-      this.clearGroup(this.emailGroup, this.emailInput,
-        this.emailGroup.querySelector('.field-message'));
-      this.clearGroup(this.pwGroup, this.pwInput,
-        this.pwGroup.querySelector('.field-message'));
-
+      this.clearGroup(this.emailGroup, this.emailInput, this.emailGroup.querySelector('.field-message'));
+      this.clearGroup(this.pwGroup,    this.pwInput,    this.pwGroup.querySelector('.field-message'));
       this.hideStrength();
       this.hideError();
+      this.hideNotification();
 
       const label = this.submitBtn.querySelector('.btn-label');
       label.textContent = 'Sign In';
       this.submitBtn.classList.remove('is-success');
       this.submitBtn.disabled = true;
-
-      // Reset overlay CTA back to default
       this.updateOverlayCta(null);
-
       document.querySelectorAll('.fbadge').forEach(b => b.classList.remove('lit'));
     });
   }
 
-  // ── Social buttons 
   bindSocialBtns() {
     document.querySelectorAll('#socialGrid .social-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -363,7 +367,6 @@ class AuthGate {
     });
   }
 
-  // ── Copy buttons 
   bindCopyBtns() {
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -381,7 +384,6 @@ class AuthGate {
     });
   }
 
-  // ── Forgot password 
   bindForgot() {
     if (!this.forgotLink) return;
     const card = document.getElementById('authGateCard');
@@ -399,7 +401,6 @@ class AuthGate {
     });
   }
 
-  // ── Ripple 
   bindRipple() {
     document.querySelectorAll('.auth-btn').forEach(btn => {
       btn.addEventListener('click', (e) => this.addRipple(btn, e));
@@ -412,16 +413,14 @@ class AuthGate {
     const ripple = document.createElement('span');
     ripple.className = 'btn-ripple';
     Object.assign(ripple.style, {
-      width:  `${size}px`,
-      height: `${size}px`,
-      left:   `${e.clientX - rect.left  - size / 2}px`,
-      top:    `${e.clientY - rect.top   - size / 2}px`,
+      width:  `${size}px`, height: `${size}px`,
+      left:   `${e.clientX - rect.left - size / 2}px`,
+      top:    `${e.clientY - rect.top  - size / 2}px`,
     });
     btn.appendChild(ripple);
     ripple.addEventListener('animationend', () => ripple.remove());
   }
 
-  // ── Error banner 
   showError(html) {
     this.errorBanner.style.display = 'flex';
     this.errorMsg.innerHTML = html;
@@ -432,18 +431,14 @@ class AuthGate {
 
   hideError() { this.errorBanner.style.display = 'none'; }
 
-  // ── Badge helpers 
   lightBadge(id, on = true) {
     const el = document.getElementById(id);
     if (el) el.classList.toggle('lit', on);
   }
 
-  // ── Validation helpers 
   setError(group, input, msg, text) {
-    group.classList.remove('has-success');
-    group.classList.add('has-error');
-    input.classList.remove('is-success');
-    input.classList.add('is-error');
+    group.classList.remove('has-success'); group.classList.add('has-error');
+    input.classList.remove('is-success');  input.classList.add('is-error');
     if (msg && text) {
       msg.className = 'field-message error';
       msg.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${text}`;
@@ -451,10 +446,8 @@ class AuthGate {
   }
 
   setSuccess(group, input, msg, text) {
-    group.classList.remove('has-error');
-    group.classList.add('has-success');
-    input.classList.remove('is-error');
-    input.classList.add('is-success');
+    group.classList.remove('has-error'); group.classList.add('has-success');
+    input.classList.remove('is-error');  input.classList.add('is-success');
     if (msg) {
       msg.className = 'field-message success';
       msg.innerHTML = text ? `<i class="fas fa-check-circle"></i> ${text}` : '';
@@ -468,4 +461,7 @@ class AuthGate {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => new AuthGate());
+// Expose globally for projectModal.js
+document.addEventListener('DOMContentLoaded', () => {
+  window.authGate = new AuthGate();
+});
