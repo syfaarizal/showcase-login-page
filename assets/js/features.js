@@ -131,11 +131,11 @@ class AuthGate {
     if (!cta) return;
     if (url) {
       cta.onclick = (e) => { e.preventDefault(); window.open(url, '_blank', 'noopener'); };
-      cta.innerHTML = '<i class="fas fa-external-link-alt"></i> Buka Demo Sekarang';
+      cta.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Demo Now';
     } else {
       cta.onclick = null;
       cta.setAttribute('href', '#showcase');
-      cta.innerHTML = '<i class="fas fa-arrow-down"></i> Lihat Showcase';
+      cta.innerHTML = '<i class="fas fa-arrow-down"></i> See Showcase';
     }
   }
 
