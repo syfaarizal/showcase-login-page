@@ -36,12 +36,14 @@ showcase-login-page/
 │ │ ├── style.css # Main styles
 │ │ ├── animations.css # Animation styles
 │ │ ├── particles.css # Particle system styles
+│ │ ├── features.css # Login page style
 │ │ └── responsive.css # Responsive styles
 │ ├── js/
 │ │ ├── script.js # Main application logic
 │ │ ├── animations.js # Animation controller
 │ │ ├── particles.js # Particle system
-│ │ └── projectModal.js# Project details modal
+│ │ ├── projectModal.js # Project details modal
+│ │ └── features.js # Login login page
 │ └── img/ # Project images
 └── README.md # This file
 ```
