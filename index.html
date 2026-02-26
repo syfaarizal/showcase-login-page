@@ -452,424 +452,159 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       FEATURES SECTION — Production-Ready Auth UI Components
+       FEATURES SECTION — Production-Ready Auth UI Gate
+       ═══════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════
+       FEATURES SECTION — Unified Auth Login Gate
        ═══════════════════════════════════════════════════════ -->
   <section class="features-section reveal" id="features">
-    <div class="section-header">
-      <h2>Auth UI <span class="accent">Features</span></h2>
-      <p>Production-ready interaction patterns for every login flow</p>
-    </div>
 
-    <!-- Tab Navigation -->
-    <div class="feature-tabs">
-      <button class="feature-tab active" data-feature="validation">
-        <i class="fas fa-shield-halved"></i> Validation States
-      </button>
-      <button class="feature-tab" data-feature="loading">
-        <i class="fas fa-spinner"></i> Loading Button
-      </button>
-      <button class="feature-tab" data-feature="disabled">
-        <i class="fas fa-ban"></i> Disabled State
-      </button>
-      <button class="feature-tab" data-feature="password">
-        <i class="fas fa-eye"></i> Password Toggle
-      </button>
-      <button class="feature-tab" data-feature="remember">
-        <i class="fas fa-bookmark"></i> Remember Me
-      </button>
-      <button class="feature-tab" data-feature="social">
-        <i class="fas fa-share-nodes"></i> Social Login
-      </button>
-    </div>
-
-    <!-- ── PANEL 1 : Validation States ── -->
-    <div class="feature-panel active" data-panel="validation">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-shield-halved"></i> Live Demo</div>
-
-        <!-- Username field -->
-        <div class="auth-form-group" id="val-user-group">
-          <label>Username</label>
-          <div class="auth-input-wrap">
-            <input type="text" class="auth-input" placeholder="Try typing your name…">
-            <i class="fas fa-xmark-circle validation-icon icon-error"></i>
-            <i class="fas fa-circle-check validation-icon icon-success"></i>
+    <!-- Intro copy -->
+    <div class="features-intro">
+      <div class="features-intro-text">
+        <p class="features-eyebrow"><i class="fas fa-shield-halved"></i> Production-Ready Auth UI</p>
+        <h2>Try the Demo <span class="accent">Login</span></h2>
+        <p class="features-desc">
+          Semua fitur auth UI production-ready dikemas dalam satu form:
+          social login, validasi real-time, password toggle, strength meter,
+          remember me, loading state, dan disabled state — semuanya aktif.
+        </p>
+        <div class="features-credential-hint">
+          <div class="credential-label">
+            <i class="fas fa-circle-info"></i> Demo credentials
           </div>
-          <span class="field-message"></span>
+          <div class="credential-row">
+            <span class="credential-key">Email</span>
+            <code class="credential-val" id="hint-email">demo@sicoder.dev</code>
+            <button class="copy-btn" data-copy="demo@sicoder.dev" title="Copy">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          <div class="credential-row">
+            <span class="credential-key">Password</span>
+            <code class="credential-val" id="hint-pw">SiCoder@2026</code>
+            <button class="copy-btn" data-copy="SiCoder@2026" title="Copy">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Email field -->
-        <div class="auth-form-group" id="val-email-group">
-          <label>Email Address</label>
-          <div class="auth-input-wrap">
-            <input type="email" class="auth-input" placeholder="you@example.com">
-            <i class="fas fa-xmark-circle validation-icon icon-error"></i>
-            <i class="fas fa-circle-check validation-icon icon-success"></i>
-          </div>
-          <span class="field-message"></span>
-        </div>
+        <!-- Feature badge list -->
+        <ul class="features-badge-list">
+          <li class="fbadge" id="badge-social"><i class="fas fa-share-nodes"></i> Social Login</li>
+          <li class="fbadge" id="badge-validation"><i class="fas fa-circle-check"></i> Validation States</li>
+          <li class="fbadge" id="badge-toggle"><i class="fas fa-eye"></i> Password Toggle</li>
+          <li class="fbadge" id="badge-strength"><i class="fas fa-gauge-high"></i> Strength Meter</li>
+          <li class="fbadge" id="badge-remember"><i class="fas fa-bookmark"></i> Remember Me</li>
+          <li class="fbadge" id="badge-loading"><i class="fas fa-spinner"></i> Loading State</li>
+          <li class="fbadge" id="badge-disabled"><i class="fas fa-ban"></i> Disabled State</li>
+        </ul>
       </div>
 
-      <div class="info-card">
-        <div>
-          <h4>Validation States</h4>
-          <p>Inline feedback reduces form errors by up to 22%. Each field transitions between neutral, error, and success states with color-coded borders, icons, and helper text.</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge good"><i class="fas fa-check"></i> Success</span>
-          <span class="info-badge warn"><i class="fas fa-triangle-exclamation"></i> Error</span>
-          <span class="info-badge"><i class="fas fa-minus"></i> Neutral</span>
-        </div>
-        <div>
-          <h4>Patterns Used</h4>
-          <p>Border colour, background tint, trailing icon, label colour shift, and descriptive helper message — all driven by CSS classes <code>.is-error</code> / <code>.is-success</code>.</p>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">CSS</span>
-          </div>
-          <pre><code><span class="cls">.auth-input</span><span class="kw">.is-error</span> {
-  <span class="fn">border-color</span>: <span class="str">var(--error)</span>;
-  <span class="fn">background</span>:   <span class="str">rgba(239,68,68,.04)</span>;
-}
-<span class="cls">.auth-input</span><span class="kw">.is-success</span> {
-  <span class="fn">border-color</span>: <span class="str">var(--success)</span>;
-}</code></pre>
-        </div>
-      </div>
-    </div>
+      <!-- The unified login form card -->
+      <div class="auth-gate-card" id="authGateCard">
 
-    <!-- ── PANEL 2 : Loading Button ── -->
-    <div class="feature-panel" data-panel="loading" style="display:none">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-spinner"></i> Live Demo — click the button</div>
-
-        <div class="auth-form-group">
-          <label>Email</label>
-          <div class="auth-input-wrap">
-            <input type="email" class="auth-input" value="user@example.com" readonly>
-          </div>
-        </div>
-        <div class="auth-form-group" style="margin-bottom:1.5rem">
-          <label>Password</label>
-          <div class="auth-input-wrap">
-            <input type="password" class="auth-input" value="••••••••" readonly>
+        <!-- ── Locked overlay (shown after success) ── -->
+        <div class="auth-success-overlay" id="authSuccessOverlay">
+          <div class="success-inner">
+            <div class="success-icon-wrap"><i class="fas fa-unlock-keyhole"></i></div>
+            <h3>Access Granted</h3>
+            <p>Selamat datang! Kamu berhasil masuk ke dalam showcase.</p>
+            <a href="#showcase" class="auth-btn-success-cta">
+              <i class="fas fa-arrow-down"></i> Lihat Showcase
+            </a>
+            <button class="auth-reset-link" id="authResetBtn">Reset demo</button>
           </div>
         </div>
 
-        <button class="auth-btn"
-                data-loading-btn
-                data-load-text="Signing in…"
-                data-success-text="✓ Welcome back!">
-          <span class="btn-spinner"></span>
-          <span class="btn-label">Sign In</span>
-        </button>
-      </div>
-
-      <div class="info-card">
-        <div>
-          <h4>Loading Button</h4>
-          <p>Prevents double-submits and keeps users informed. Three states: idle, loading (spinner + dimmed label), and success (green flash before reset).</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge">Idle</span>
-          <span class="info-badge warn">Loading</span>
-          <span class="info-badge good">Success</span>
-        </div>
-        <div>
-          <h4>Why it matters</h4>
-          <p>Without loading feedback, 35% of users click a submit button more than once — causing duplicate requests or broken UX.</p>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">JS</span>
+        <div class="auth-gate-inner" id="authGateInner">
+          <div class="auth-gate-header">
+            <div class="auth-logo-mark">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Sign in to SICODER</h3>
+            <p>Explore the full project showcase</p>
           </div>
-          <pre><code><span class="fn">btn</span>.classList.<span class="fn">add</span>(<span class="str">'is-loading'</span>);
-label.<span class="fn">textContent</span> = <span class="str">'Signing in…'</span>;
 
-<span class="kw">setTimeout</span>(() => {
-  btn.classList.<span class="fn">replace</span>(
-    <span class="str">'is-loading'</span>, <span class="str">'is-success'</span>
-  );
-}, <span class="str">2000</span>);</code></pre>
-        </div>
-      </div>
-    </div>
+          <!-- Social Login Buttons -->
+          <div class="social-grid" id="socialGrid">
+            <button class="social-btn google" data-provider="Google">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span>Google</span>
+            </button>
+            <button class="social-btn github" data-provider="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>GitHub</span>
+            </button>
+          </div>
 
-    <!-- ── PANEL 3 : Disabled State ── -->
-    <div class="feature-panel" data-panel="disabled" style="display:none">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-ban"></i> Disabled State Preview</div>
+          <div class="social-divider">or sign in with email</div>
 
-        <div class="disabled-badge"><i class="fas fa-lock"></i> Account suspended</div>
-
-        <div class="disabled-demo-row">
-          <div class="auth-form-group">
-            <label>Email</label>
+          <!-- Email -->
+          <div class="auth-form-group" id="gate-email-group">
+            <label for="gate-email">Email Address</label>
             <div class="auth-input-wrap">
-              <input type="email" class="auth-input" value="locked@example.com" disabled>
+              <input type="email" id="gate-email" class="auth-input"
+                     placeholder="you@example.com" autocomplete="email">
+              <i class="fas fa-xmark-circle validation-icon icon-error"></i>
+              <i class="fas fa-circle-check validation-icon icon-success"></i>
             </div>
+            <span class="field-message"></span>
           </div>
-          <div class="auth-form-group">
-            <label>Password</label>
+
+          <!-- Password -->
+          <div class="auth-form-group" id="gate-pw-group">
+            <label for="gate-pw">Password</label>
             <div class="auth-input-wrap">
-              <input type="password" class="auth-input" placeholder="Unavailable" disabled>
+              <input type="password" id="gate-pw" class="auth-input has-toggle"
+                     placeholder="Enter your password" autocomplete="current-password">
+              <button type="button" class="pw-toggle-btn" aria-label="Toggle password">
+                <i class="fas fa-eye"></i>
+                <i class="fas fa-eye-slash"></i>
+              </button>
             </div>
-          </div>
-          <button class="auth-btn is-disabled" disabled>
-            <i class="fas fa-lock"></i>
-            <span class="btn-label">Access Disabled</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div>
-          <h4>Disabled State</h4>
-          <p>Clearly communicates when a form or action is unavailable. Reduced opacity, a <code>not-allowed</code> cursor, and muted colours signal non-interactivity without confusion.</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge"><i class="fas fa-input-text"></i> Input disabled</span>
-          <span class="info-badge"><i class="fas fa-rectangle-xmark"></i> Button disabled</span>
-        </div>
-        <div>
-          <h4>Accessibility note</h4>
-          <p>Always pair <code>disabled</code> with a visible reason (badge or helper text) — colour alone is not sufficient for accessibility compliance.</p>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">CSS</span>
-          </div>
-          <pre><code><span class="cls">.auth-btn</span>:<span class="kw">disabled</span> {
-  <span class="fn">background</span>: <span class="str">var(--bg-tertiary)</span>;
-  <span class="fn">color</span>:      <span class="str">var(--text-muted)</span>;
-  <span class="fn">cursor</span>:     <span class="str">not-allowed</span>;
-  <span class="fn">pointer-events</span>: <span class="str">none</span>;
-}</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PANEL 4 : Password Toggle ── -->
-    <div class="feature-panel" data-panel="password" style="display:none">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-eye"></i> Toggle &amp; Strength Meter</div>
-
-        <div class="auth-form-group">
-          <label>Create Password</label>
-          <div class="auth-input-wrap">
-            <input type="password" class="auth-input has-toggle" id="strength-pw-input"
-                   placeholder="Type a password to test strength…">
-            <button type="button" class="pw-toggle-btn" aria-label="Toggle password visibility">
-              <i class="fas fa-eye"></i>
-              <i class="fas fa-eye-slash"></i>
-            </button>
-          </div>
-          <div class="pw-strength">
-            <div class="pw-strength-bar">
-              <div class="pw-strength-fill" id="strength-fill"></div>
+            <!-- Strength meter — visible only on wrong pw attempt -->
+            <div class="pw-strength" id="gate-strength" style="display:none">
+              <div class="pw-strength-bar">
+                <div class="pw-strength-fill" id="gate-strength-fill"></div>
+              </div>
+              <span class="pw-strength-label" id="gate-strength-label"></span>
             </div>
-            <span class="pw-strength-label" id="strength-label">Start typing to check strength</span>
+            <span class="field-message"></span>
           </div>
-        </div>
 
-        <div class="auth-form-group" style="margin-top:1rem">
-          <label>Confirm Password</label>
-          <div class="auth-input-wrap">
-            <input type="password" class="auth-input has-toggle" placeholder="Repeat your password">
-            <button type="button" class="pw-toggle-btn" aria-label="Toggle password visibility">
-              <i class="fas fa-eye"></i>
-              <i class="fas fa-eye-slash"></i>
-            </button>
+          <!-- Remember + Forgot -->
+          <div class="remember-row">
+            <label class="custom-checkbox-wrap" for="gate-remember">
+              <input type="checkbox" id="gate-remember">
+              <span class="custom-checkbox"><i class="fas fa-check"></i></span>
+              <span class="custom-checkbox-label">Remember me</span>
+            </label>
+            <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
           </div>
-        </div>
-      </div>
 
-      <div class="info-card">
-        <div>
-          <h4>Password Toggle + Strength</h4>
-          <p>Toggling visibility reduces user errors by letting them verify what they typed. The strength meter gives live feedback on password quality without requiring a submit.</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge warn">Weak</span>
-          <span class="info-badge warn" style="border-color:var(--warning);color:var(--warning)">Fair</span>
-          <span class="info-badge good">Strong</span>
-        </div>
-        <div>
-          <h4>Strength criteria</h4>
-          <p>Length ≥ 8, uppercase, number, and special character — each adds a point. Score ≤ 1 = Weak, ≤ 3 = Fair, 4 = Strong.</p>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">JS</span>
-          </div>
-          <pre><code><span class="cmt">// Toggle input type</span>
-<span class="fn">btn</span>.addEventListener(<span class="str">'click'</span>, () => {
-  input.type = input.type
-    === <span class="str">'password'</span>
-    ? <span class="str">'text'</span>
-    : <span class="str">'password'</span>;
-});</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PANEL 5 : Remember Me ── -->
-    <div class="feature-panel" data-panel="remember" style="display:none">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-bookmark"></i> Remember Me + Forgot Password</div>
-
-        <div class="auth-form-group">
-          <label>Email</label>
-          <div class="auth-input-wrap">
-            <input type="email" class="auth-input" placeholder="you@example.com">
-          </div>
-        </div>
-        <div class="auth-form-group">
-          <label>Password</label>
-          <div class="auth-input-wrap">
-            <input type="password" class="auth-input has-toggle" placeholder="Enter password">
-            <button type="button" class="pw-toggle-btn" aria-label="Toggle password">
-              <i class="fas fa-eye"></i><i class="fas fa-eye-slash"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="remember-row">
-          <label class="custom-checkbox-wrap" for="cb-remember">
-            <input type="checkbox" id="cb-remember">
-            <span class="custom-checkbox"><i class="fas fa-check"></i></span>
-            <span class="custom-checkbox-label">Remember me for 30 days</span>
-          </label>
-          <a href="#" class="forgot-link">Forgot password?</a>
-        </div>
-
-        <button class="auth-btn"
-                data-loading-btn
-                data-load-text="Authenticating…"
-                data-success-text="✓ Signed in!">
-          <span class="btn-spinner"></span>
-          <span class="btn-label">Sign In</span>
-        </button>
-      </div>
-
-      <div class="info-card">
-        <div>
-          <h4>Remember Me</h4>
-          <p>A fully custom checkbox — no browser default styling. The checked state is animated with a CSS scale transform and accent colour fill. Persists via <code>sessionStorage</code> in this demo.</p>
-        </div>
-        <div>
-          <h4>Forgot Password Link</h4>
-          <p>Positioned inline with Remember Me to keep the form compact. A subtle underline on hover signals interactivity without cluttering the layout.</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge good">Accessible</span>
-          <span class="info-badge good">Animated</span>
-          <span class="info-badge">No JS required</span>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">CSS</span>
-          </div>
-          <pre><code><span class="cmt">/* Hidden native, custom shown */</span>
-<span class="cls">input</span>[<span class="fn">type</span>=<span class="str">"checkbox"</span>]:checked
-  ~ <span class="cls">.custom-checkbox</span> {
-  <span class="fn">background</span>: <span class="str">var(--accent-primary)</span>;
-  <span class="fn">border-color</span>: <span class="str">var(--accent-primary)</span>;
-}</code></pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PANEL 6 : Social Login ── -->
-    <div class="feature-panel" data-panel="social" style="display:none">
-      <div class="demo-card">
-        <div class="demo-card-label"><i class="fas fa-share-nodes"></i> Social Login Buttons</div>
-
-        <div class="social-grid">
-          <button class="social-btn google" data-provider="Google">
-            <!-- Google SVG -->
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-            </svg>
-            <span class="btn-label">Google</span>
+          <!-- Submit -->
+          <button class="auth-btn" id="gateSubmitBtn" disabled>
+            <span class="btn-spinner"></span>
+            <span class="btn-label">Sign In</span>
           </button>
 
-          <button class="social-btn github" data-provider="GitHub">
-            <!-- GitHub SVG -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            <span class="btn-label">GitHub</span>
-          </button>
-
-          <button class="social-btn twitter" data-provider="X / Twitter">
-            <!-- X SVG -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            <span class="btn-label">X / Twitter</span>
-          </button>
-
-          <button class="social-btn facebook" data-provider="Facebook">
-            <!-- Facebook SVG -->
-            <svg viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            <span class="btn-label">Facebook</span>
-          </button>
-        </div>
-
-        <div class="social-divider">or continue with email</div>
-
-        <div class="auth-form-group" style="margin-bottom:0.8rem">
-          <label>Email</label>
-          <div class="auth-input-wrap">
-            <input type="email" class="auth-input" placeholder="you@example.com">
+          <!-- Wrong-credentials error banner -->
+          <div class="auth-error-banner" id="authErrorBanner" style="display:none">
+            <i class="fas fa-circle-exclamation"></i>
+            <span id="authErrorMsg">Email or password is incorrect.</span>
           </div>
-        </div>
-        <button class="auth-btn"
-                data-loading-btn
-                data-load-text="Continuing…"
-                data-success-text="✓ Redirecting!">
-          <span class="btn-spinner"></span>
-          <span class="btn-label">Continue with Email</span>
-        </button>
-      </div>
 
-      <div class="info-card">
-        <div>
-          <h4>Social Login UI</h4>
-          <p>Native SVG brand icons — no icon font dependency. Each button uses brand-specific hover colour and shadow to reinforce provider identity without violating brand guidelines.</p>
-        </div>
-        <div class="info-badge-list">
-          <span class="info-badge" style="border-color:#4285F4;color:#4285F4">Google</span>
-          <span class="info-badge" style="border-color:#6e7681;color:#6e7681">GitHub</span>
-          <span class="info-badge" style="border-color:#1D9BF0;color:#1D9BF0">X</span>
-          <span class="info-badge" style="border-color:#1877F2;color:#1877F2">Facebook</span>
-        </div>
-        <div>
-          <h4>UX Pattern</h4>
-          <p>Social options are shown <em>above</em> the email field to surface the faster path first. The divider "or continue with email" sets clear expectation hierarchy.</p>
-        </div>
-        <div class="code-preview">
-          <div class="code-preview-header">
-            <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="code-preview-lang">CSS</span>
-          </div>
-          <pre><code><span class="cls">.social-btn</span>.<span class="fn">google</span>:<span class="kw">hover</span> {
-  <span class="fn">border-color</span>: <span class="str">#4285F4</span>;
-  <span class="fn">box-shadow</span>: <span class="str">0 4px 14px
-    rgba(66,133,244,.2)</span>;
-}</code></pre>
+          <p class="auth-gate-footnote">
+            This is a demo — no data is stored or transmitted.
+          </p>
         </div>
       </div>
     </div>
