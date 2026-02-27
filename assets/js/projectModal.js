@@ -22,6 +22,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/css-login-button",
         demo: "https://syfaarizal.github.io/css-login-button/",
         designInspiration: "Inspired by modern productivity apps that prioritize focus and minimal distractions.",
+        useCases: [
+          { icon: "fa-gauge-high",      label: "SaaS Dashboard"   },
+          { icon: "fa-terminal",         label: "Developer Tool"   },
+          { icon: "fa-moon",             label: "Dark-first App"   },
+          { icon: "fa-lock",             label: "Internal Portal"  }
+        ],
         stats: {
           linesOfCode: 5697,
           developmentTime: "8 hours",
@@ -46,6 +52,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/login-page-panorama",
         demo: "https://syfaarizal.github.io/login-page-panorama/",
         designInspiration: "Inspired by sunset gradients and modern UI trends in web applications.",
+        useCases: [
+          { icon: "fa-bullhorn",         label: "Marketing Site"   },
+          { icon: "fa-rocket",           label: "Startup Landing"  },
+          { icon: "fa-image",            label: "Creative Agency"  },
+          { icon: "fa-paper-plane",      label: "Newsletter App"   }
+        ],
         stats: {
           linesOfCode: 3184,
           developmentTime: "10 hours",
@@ -70,6 +82,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/login-page-basic-purple",
         demo: "https://syfaarizal.github.io/login-page-basic-purple/",
         designInspiration: "Inspired by modern SaaS application interfaces that prioritize clarity and ease of use.",
+        useCases: [
+          { icon: "fa-gauge-high",      label: "SaaS Dashboard"   },
+          { icon: "fa-table-columns",   label: "Admin Panel"      },
+          { icon: "fa-briefcase",       label: "B2B Platform"     },
+          { icon: "fa-shop",            label: "E-Commerce"       }
+        ],
         stats: {
           linesOfCode: 2362,
           developmentTime: "6 hours",
@@ -94,6 +112,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/astronaut-login-page",
         demo: "https://syfaarizal.github.io/astronaut-login-page/",
         designInspiration: "Inspired by space exploration interfaces and premium design systems.",
+        useCases: [
+          { icon: "fa-gamepad",          label: "Gaming Platform"  },
+          { icon: "fa-gem",              label: "Premium SaaS"     },
+          { icon: "fa-cube",             label: "Web3 / NFT App"   },
+          { icon: "fa-star",             label: "Portfolio Site"   }
+        ],
         stats: {
           linesOfCode: 1425,
           developmentTime: "4 hours",
@@ -119,6 +143,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/login-signup-page",
         demo: "https://syfaarizal.github.io/login-signup-page/",
         designInspiration: "Inspired by modern and clean UI, user-first layout, premium look without heavy assets, and easy integration into real products",
+        useCases: [
+          { icon: "fa-mobile-screen",    label: "Mobile-first App" },
+          { icon: "fa-shop",             label: "E-Commerce"       },
+          { icon: "fa-users",            label: "Social Platform"  },
+          { icon: "fa-heart",            label: "Lifestyle Brand"  }
+        ],
         stats: {
           linesOfCode: 1175,
           developmentTime: "8 hours",
@@ -144,6 +174,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/login-page-red",
         demo: "https://login-page-red-six.vercel.app/",
         designInspiration: "Inspired by modern UI trends and the elegance of red roses.",
+        useCases: [
+          { icon: "fa-mobile-screen",    label: "Mobile-first App" },
+          { icon: "fa-bag-shopping",     label: "Fashion & Beauty" },
+          { icon: "fa-shop",             label: "E-Commerce"       },
+          { icon: "fa-spa",              label: "Lifestyle App"    }
+        ],
         stats: {
           linesOfCode: 7321,
           developmentTime: "7 hours",
@@ -169,6 +205,12 @@ class ProjectModal {
         github: "https://github.com/syfaarizal/otakore-login-page",
         demo: "https://otakore.vercel.app/",
         designInspiration: "Inspired by the vibrant and dynamic world of otakore.",
+        useCases: [
+          { icon: "fa-tv",               label: "Anime Streaming"  },
+          { icon: "fa-gamepad",          label: "Gaming Platform"  },
+          { icon: "fa-users",            label: "Fan Community"    },
+          { icon: "fa-wand-magic-sparkles", label: "Entertainment" }
+        ],
         stats: {
           linesOfCode: 17631,
           developmentTime: "6 hours",
@@ -289,6 +331,17 @@ class ProjectModal {
           <div class="project-section">
             <h3><i class="fas fa-lightbulb"></i> Design Inspiration</h3>
             <p>${project.designInspiration}</p>
+          </div>
+
+          <div class="project-section">
+            <h3><i class="fas fa-layer-group"></i> Best Used For</h3>
+            <div class="usecase-grid">
+              ${project.useCases.map(uc => `
+              <div class="usecase-item">
+                <div class="usecase-icon"><i class="fas ${uc.icon}"></i></div>
+                <span class="usecase-label">${uc.label}</span>
+              </div>`).join('')}
+            </div>
           </div>
 
           <div class="project-actions">
