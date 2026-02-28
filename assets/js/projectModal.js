@@ -217,6 +217,37 @@ class ProjectModal {
           performanceScore: "Smooth & lightweight",
           accessibility: "WCAG A compliant"
         }
+      },
+      'cherry-cart':{
+        title: "Cherry Cart Login Page",
+        description: "A modern login page with a cherry cart theme and clean layout.",
+        longDescription: "This project showcases a visually appealing login page themed around the charm of cherry carts. The design emphasizes simplicity and user-friendliness, ensuring that users can easily navigate the login process while enjoying the aesthetic elements inspired by cherry carts.",
+        features: [
+          "Cherry cart theme",
+          "Clean layout",
+          "Responsive design",
+          "Clear call-to-action buttons",
+          "Smooth animations",
+          "Cross-browser compatibility"
+        ],
+        challenges: "Creating a visually appealing login page with a cherry cart theme. Solved by using CSS gradients and animations to create depth and visual interest.",
+        technologies: ["React", "Tailwind CSS", "Lucide React", "Responsive Design"],
+        date: "February 2026",
+        github: "https://github.com/syfaarizal/login-page-cherry",
+        demo: "https://login-page-cherry.vercel.app/",
+        designInspiration: "Inspired by modern UI trends and the charm of cherry carts.",
+        useCases: [
+          { icon: "fa-mobile-screen",    label: "Mobile-first App" },
+          { icon: "fa-bag-shopping",     label: "Fashion & Beauty" },
+          { icon: "fa-shop",             label: "E-Commerce"       },
+          { icon: "fa-spa",              label: "Lifestyle App"    }
+        ],
+        stats: {
+          linesOfCode: 3665,
+          developmentTime: "5 hours",
+          performanceScore: "Smooth & lightweight",
+          accessibility: "WCAG A compliant"
+        }
       }
     };
     this.init();
