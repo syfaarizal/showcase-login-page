@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { Theme } from '../types';
 
 interface NavigationProps {
@@ -6,21 +6,85 @@ interface NavigationProps {
   onToggleTheme: () => void;
 }
 
+const NAV_LINKS = [
+  { href: '#showcase', label: 'Showcase' },
+  { href: '#features', label: 'Features' },
+  { href: '#design',   label: 'Design'   },
+  { href: '#about',    label: 'About'    },
+];
+
 export function Navigation({ theme, onToggleTheme }: NavigationProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('showcase');
+  const isClickScrollingRef = useRef(false);
+  const clickScrollTimerRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const scrollToProjects = () => {
-    const el = document.getElementById('showcase');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Track active section based on scroll position
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map(l => l.href.slice(1));
+
+    const getActiveSection = () => {
+      if (isClickScrollingRef.current) return;
+
+      const scrollY = window.scrollY;
+      const windowH = window.innerHeight;
+
+      // Walk sections — whichever top edge has passed 40% of the viewport wins
+      let active = sectionIds[0];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (scrollY + windowH * 0.4 >= top) {
+          active = id;
+        }
+      }
+
+      // If scrolled to the very bottom, highlight last section
+      const atBottom =
+        window.innerHeight + scrollY >= document.documentElement.scrollHeight - 50;
+      if (atBottom) active = sectionIds[sectionIds.length - 1];
+
+      setActiveSection(active);
+    };
+
+    getActiveSection();
+    window.addEventListener('scroll', getActiveSection, { passive: true });
+    return () => window.removeEventListener('scroll', getActiveSection);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const sectionId = href.slice(1);
+    const el = document.getElementById(sectionId);
+
+    if (el) {
+      // Immediately move the underline on click — don't wait for scroll
+      setActiveSection(sectionId);
+
+      // Pause scroll-based detection while smooth scroll animates
+      isClickScrollingRef.current = true;
+      clearTimeout(clickScrollTimerRef.current);
+      clickScrollTimerRef.current = setTimeout(() => {
+        isClickScrollingRef.current = false;
+      }, 900);
+
+      window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+    }
+
     setMenuOpen(false);
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const href = e.currentTarget.getAttribute('href');
-    if (href && href !== '#') {
-      const el = document.querySelector(href);
-      if (el) window.scrollTo({ top: (el as HTMLElement).offsetTop - 80, behavior: 'smooth' });
+  const scrollToProjects = () => {
+    const el = document.getElementById('showcase');
+    if (el) {
+      setActiveSection('showcase');
+      isClickScrollingRef.current = true;
+      clearTimeout(clickScrollTimerRef.current);
+      clickScrollTimerRef.current = setTimeout(() => {
+        isClickScrollingRef.current = false;
+      }, 900);
+      window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
     }
     setMenuOpen(false);
   };
@@ -35,11 +99,19 @@ export function Navigation({ theme, onToggleTheme }: NavigationProps) {
       </div>
 
       <div className={`nav-links${menuOpen ? ' show' : ''}`}>
-        <a href="#showcase" className="nav-link active" onClick={handleNavClick}>Showcase</a>
-        <a href="#features" className="nav-link" onClick={handleNavClick}>Features</a>
-        <a href="#design" className="nav-link" onClick={handleNavClick}>Design</a>
-        <a href="#about" className="nav-link" onClick={handleNavClick}>About</a>
-        <button className="nav-cta" onClick={scrollToProjects}>Explore Projects</button>
+        {NAV_LINKS.map(({ href, label }) => (
+          <a
+            key={href}
+            href={href}
+            className={`nav-link${activeSection === href.slice(1) ? ' active' : ''}`}
+            onClick={e => handleNavClick(e, href)}
+          >
+            {label}
+          </a>
+        ))}
+        <button className="nav-cta" onClick={scrollToProjects}>
+          Explore Projects
+        </button>
       </div>
 
       <button
