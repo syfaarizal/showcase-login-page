@@ -1,138 +1,73 @@
-# SICODER Showcase
+# React + TypeScript + Vite
 
-A modern, interactive showcase of beautifully designed login pages built with HTML, CSS, and JavaScript.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-✨ **Interactive Design**
-- Smooth animations and transitions
-- Particle background system
-- Theme switching (light/dark mode)
-- Interactive filtering and sorting
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-🎨 **Visual Appeal**
-- Custom particle system with mouse interactions
-- Floating shape animations
-- Glassmorphism effects
-- Gradient backgrounds
+## React Compiler
 
-📱 **Responsive Design**
-- Fully responsive across all devices
-- Mobile-first approach
-- Touch-friendly interactions
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-⚡ **Performance**
-- Optimized animations (60fps)
-- Lazy loading images
-- Minimal external dependencies
-- Clean, maintainable code
+## Expanding the ESLint configuration
 
-## Project Structure
-```
-showcase-login-page/
-├── index.html # Main HTML file
-├── assets/
-│ ├── css/
-│ │ ├── style.css # Main styles
-│ │ ├── animations.css # Animation styles
-│ │ ├── particles.css # Particle system styles
-│ │ ├── features.css # Login page style
-│ │ └── responsive.css # Responsive styles
-│ ├── js/
-│ │ ├── script.js # Main application logic
-│ │ ├── animations.js # Animation controller
-│ │ ├── particles.js # Particle system
-│ │ ├── projectModal.js # Project details modal
-│ │ └── features.js # Login login page
-│ └── img/ # Project images
-└── README.md # This file
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## Getting Started
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-1. Clone the repository:
-```bash
-git clone https://github.com/syfaarizal/showcase-login-page.git
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-2. Open index.html in your browser
-3. Explore the interactive showcase!
-
-## Usage
-
-### Filtering Projects
-
-Click on the filter buttons to view projects by category:
-
-- All Projects
-- Minimalist
-- Dark Mode
-- Gradient
-- Premium
-
-### Viewing Project Details
-Click the "Details" button on any project card to see:
-
-- Project overview
-- Design challenges and solutions
-- Technologies used
-- Project statistics
-- Live demo links
-
-### Theme Switching
-Use the theme toggle in the top-right corner to switch between light and dark modes.
-
-### Interactive Demo
-Click "Demo" on project cards to see interactive login forms with sample credentials.
-
-### Project Showcase
-1. BlackCat Minimalist
-- **Category**: Dark Mode, Minimalist
-- **Features**: Smooth animations, dark theme, clean design
-- **Tech**: HTML, CSS, Vanilla JS
-
-2. Panorama Gradient
-- Category: Gradient
-- Features: Animated gradients, glowing effects
-- Tech: HTML, CSS, JS
-
-3. Basic Purple Minimalist
-- Category: Minimalist
-- Features: Split layout, strong typography
-- Tech: HTML, CSS, JS
-
-4. Astronaut Premium
-- Category: Premium, Dark
-- Features: Glassmorphism, cosmic theme
-- Tech: HTML, CSS, JS, CDN
-
-## Design Philosophy
-1. User-Centered: Every design starts with user experience
-2. Performance First: Optimized animations and fast loading
-3. Aesthetic Excellence: Balanced beauty and functionality
-4. Clean Code: Maintainable and well-documented
-
-## Browser Support
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
-
-## License
-This project is open source and available under the MIT License.
-
-## Contact
-- Email: syifairgi@gmail.com
-- GitHub: @syfaarizal
-- Portfolio: showcase-login-page
-
---
-
-Made with ❤️ by Syfa Arizal
