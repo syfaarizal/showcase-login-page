@@ -161,7 +161,7 @@ function App() {
         ref={backToTopRef}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <img src="./assets/img/sicoder-logo.png" alt="SICODER Logo" />
+        <img src="/public/images/sicoder-logo.png" alt="SICODER Logo" />
       </button>
 
       {/* Contact modal */}
