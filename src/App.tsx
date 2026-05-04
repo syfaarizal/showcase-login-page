@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 // Styles (original CSS preserved verbatim)
 import './styles/animations.css';
@@ -161,7 +161,7 @@ function App() {
         ref={backToTopRef}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <img src="/public/images/sicoder-logo.png" alt="SICODER Logo" />
+        <img src="/images/sicoder-logo.png" alt="SICODER Logo" />
       </button>
 
       {/* Contact modal */}
